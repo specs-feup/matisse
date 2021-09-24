@@ -1,0 +1,12 @@
+block #0:
+  arg$0 = arg 0
+  arg$1 = arg 1
+  $outerif = 1
+  branch arg$1, #1, #2, #3
+block #1:
+  $innerif = 2
+block #2:
+  $innerelse = 3
+block #3:
+  $innerend = phi #1:$innerif, #2:$innerelse
+  $outerend = $innerend

@@ -1,0 +1,5 @@
+block #0:
+  $value$1 = arg 0
+  $value$2 = arg 1
+  A$1 = untyped_call ones $value$1, $value$2
+  $result$1 = call times [INT] $value$1, $value$2

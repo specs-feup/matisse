@@ -1,0 +1,13 @@
+block #0:
+  $a$1 = 10
+  $X$1 = call zeros [DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [10, 10], Dims: 2])] $a$1, $a$1
+  $one$1 = 1
+  $two$1 = 2
+  $numel$1 = call numel [INT (100)] $X$1
+  for $two$1, $one$1, $numel$1, #1, #2
+block #1:
+  $X$2 = phi #0:$X$1, #1:$X$3
+  $i$1 = iter
+  $X$3 = simple_set $X$2, $i$1, $one$1
+block #2:
+  $X$4 = phi #0:$X$1, #1:$X$3

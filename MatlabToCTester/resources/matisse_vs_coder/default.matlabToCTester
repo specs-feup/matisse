@@ -1,0 +1,183 @@
+<SetupData>
+  <dataset>
+    <entry>
+      <string>MatlabAuxiliaryFiles</string>
+      <FieldValue>
+        <rawValue class="string"></rawValue>
+        <type>string</type>
+      </FieldValue>
+    </entry>
+    <entry>
+      <string>CompilerOptions</string>
+      <FieldValue>
+        <rawValue class="StringList">
+          <stringList/>
+        </rawValue>
+        <type>stringList</type>
+      </FieldValue>
+    </entry>
+    <entry>
+      <string>RelativeError</string>
+      <FieldValue>
+        <rawValue class="string">0.0</rawValue>
+        <type>doublefloat</type>
+      </FieldValue>
+    </entry>
+    <entry>
+      <string>MatlabInputFilesDirectory</string>
+      <FieldValue>
+        <rawValue class="string"></rawValue>
+        <type>string</type>
+      </FieldValue>
+    </entry>
+    <entry>
+      <string>MatlabSourceFilesDirectory</string>
+      <FieldValue>
+        <rawValue class="string"></rawValue>
+        <type>string</type>
+      </FieldValue>
+    </entry>
+    <entry>
+      <string>OptionsForMainFunction</string>
+      <FieldValue>
+        <rawValue class="SetupData">
+          <dataset>
+            <entry>
+              <string>ReturnOutputs</string>
+              <FieldValue>
+                <rawValue class="string">true</rawValue>
+                <type>bool</type>
+              </FieldValue>
+            </entry>
+            <entry>
+              <string>Target</string>
+              <FieldValue>
+                <rawValue class="string">MultiTarget</rawValue>
+                <type>multipleChoice</type>
+              </FieldValue>
+            </entry>
+            <entry>
+              <string>PrintOutputs</string>
+              <FieldValue>
+                <rawValue class="string">false</rawValue>
+                <type>bool</type>
+              </FieldValue>
+            </entry>
+            <entry>
+              <string>EnableSuccessiveExecutions</string>
+              <FieldValue>
+                <rawValue class="string">true</rawValue>
+                <type>bool</type>
+              </FieldValue>
+            </entry>
+            <entry>
+              <string>AddCodeToMeasureExecution</string>
+              <FieldValue>
+                <rawValue class="string">true</rawValue>
+                <type>bool</type>
+              </FieldValue>
+            </entry>
+          </dataset>
+          <setupName>Options for main() function</setupName>
+        </rawValue>
+        <type>setup</type>
+      </FieldValue>
+    </entry>
+    <entry>
+      <string>CompilerName</string>
+      <FieldValue>
+        <rawValue class="string"></rawValue>
+        <type>string</type>
+      </FieldValue>
+    </entry>
+    <entry>
+      <string>MatlabToCCompiler</string>
+      <FieldValue>
+        <rawValue class="string">MATISSE</rawValue>
+        <type>multipleChoice</type>
+      </FieldValue>
+    </entry>
+    <entry>
+      <string>OutputFolder</string>
+      <FieldValue>
+        <rawValue class="string"></rawValue>
+        <type>string</type>
+      </FieldValue>
+    </entry>
+    <entry>
+      <string>CompilerOptimization</string>
+      <FieldValue>
+        <rawValue class="string">O2</rawValue>
+        <type>multipleChoice</type>
+      </FieldValue>
+    </entry>
+    <entry>
+      <string>AbsoluteError</string>
+      <FieldValue>
+        <rawValue class="string">0.0</rawValue>
+        <type>doublefloat</type>
+      </FieldValue>
+    </entry>
+    <entry>
+      <string>AspectFilesDirectory</string>
+      <FieldValue>
+        <rawValue class="string"></rawValue>
+        <type>string</type>
+      </FieldValue>
+    </entry>
+    <entry>
+      <string>StopAfter</string>
+      <FieldValue>
+        <rawValue class="string">GenerateCSources</rawValue>
+        <type>multipleChoice</type>
+      </FieldValue>
+    </entry>
+    <entry>
+      <string>SingleCFile</string>
+      <FieldValue>
+        <rawValue class="string"></rawValue>
+        <type>string</type>
+      </FieldValue>
+    </entry>
+    <entry>
+      <string>DeleteOutputContents</string>
+      <FieldValue>
+        <rawValue class="string">true</rawValue>
+        <type>bool</type>
+      </FieldValue>
+    </entry>
+    <entry>
+      <string>ImplementationSettings</string>
+      <FieldValue>
+        <rawValue class="SetupData">
+          <dataset>
+            <entry>
+              <string>UseMatrixImplementation</string>
+              <FieldValue>
+                <rawValue class="string">ALLOCATED</rawValue>
+                <type>multipleChoice</type>
+              </FieldValue>
+            </entry>
+            <entry>
+              <string>InlineAllocatedArrayOperations</string>
+              <FieldValue>
+                <rawValue class="string">false</rawValue>
+                <type>bool</type>
+              </FieldValue>
+            </entry>
+          </dataset>
+          <setupName>Implementation Settings</setupName>
+        </rawValue>
+        <type>setup</type>
+      </FieldValue>
+    </entry>
+    <entry>
+      <string>RunOnlyOneTest</string>
+      <FieldValue>
+        <rawValue class="string"></rawValue>
+        <type>string</type>
+      </FieldValue>
+    </entry>
+  </dataset>
+  <setupName>MatlabToCTester</setupName>
+</SetupData>

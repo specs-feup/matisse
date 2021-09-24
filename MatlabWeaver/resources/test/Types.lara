@@ -1,0 +1,17 @@
+import Matisse;
+
+aspectdef Types
+
+	var typeDef = {
+		a: "single[1][512]",
+		b: "single[][]",
+		c: "single[][][]",
+	};
+
+	select var end
+	apply
+		println("HELLO");	
+		def type = "single[][]";
+	end
+
+end

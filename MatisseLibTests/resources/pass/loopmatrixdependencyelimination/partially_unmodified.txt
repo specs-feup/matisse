@@ -1,0 +1,11 @@
+block #0:
+  for $start$1, $step$1, $end$1, #1, #2
+block #1:
+  A$2 = phi #0:A$1, #1:A$3
+  $iter$1 = iter
+  $value$1 = simple_get A$2, $iter$1, $one$1
+  $expr$1 = untyped_call minus $iter$1, $one$1
+  $value$2 = simple_get A$1, $expr$1, $one$1
+  A$3 = simple_set A$2, $iter$1, $one$1, $value$1
+block #2:
+  A$4 = phi #0:A$1, #1:A$3

@@ -1,0 +1,6 @@
+[AssumeMatrixIndicesInRangeProperty]
+block #0:
+  $0 = arg 0
+  $1 = arg 1
+  $2 = arg 2
+  y$ret = simple_set $0, $1, $2

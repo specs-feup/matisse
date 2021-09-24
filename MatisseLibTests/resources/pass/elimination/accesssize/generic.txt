@@ -1,0 +1,56 @@
+block #0:
+  A$1 = arg 0
+  I$1 = arg 1
+  $I_size$1 = call size [DynamicMatrixType(INT, shape=[Matrix Shape: [1, -1], Dims: 1])] I$1
+  $I_ndims$1 = call ndims [INT] I$1
+  $two$1 = 2
+  $eq_result$1 = call eq [LogicalType] $I_ndims$1, $two$1
+  branch $eq_result$1, #1, #2, #3
+block #1:
+  $I_dim1$1, $I_dim2$1 = call size [INT, INT] I$1
+  $one$1 = 1
+  $eq_result$2 = call eq [LogicalType] $I_dim1$1, $one$1
+  $one$2 = 1
+  $eq_result$3 = call eq [LogicalType] $I_dim2$1, $one$2
+  $or_result$1 = call or [LogicalType] $eq_result$2, $eq_result$3
+block #2:
+  $zero$1 = 0
+block #3:
+  $is_1d$1 = phi #1:$or_result$1, #2:$zero$1
+  branch $is_1d$1, #4, #5, #6
+block #4:
+  $ndims_result$1 = call ndims [INT] A$1
+  $two$2 = 2
+  $eq_result$4 = call eq [LogicalType] $ndims_result$1, $two$2
+  branch $eq_result$4, #7, #8, #9
+block #5:
+  
+block #6:
+  y$ret = phi #9:$merged$3, #5:$I_size$1
+block #7:
+  $A_size1$1, $A_size2$1 = call size [INT, INT] A$1
+  $one$3 = 1
+  $eq_result$5 = call eq [LogicalType] $A_size1$1, $one$3
+  branch $eq_result$5, #10, #11, #12
+block #8:
+  
+block #9:
+  $merged$3 = phi #12:$merged$2, #8:$I_size$1
+block #10:
+  $numel_result$1 = call numel [INT] I$1
+  $one$4 = 1
+  $horzcat_result$1 = call horzcat [StaticMatrixType - INT ([Matrix Shape: [1, 2], Dims: 1])] $one$4, $numel_result$1
+block #11:
+  $one$5 = 1
+  $eq_result$6 = call eq [LogicalType] $A_size2$1, $one$5
+  branch $eq_result$6, #13, #14, #15
+block #12:
+  $merged$2 = phi #10:$horzcat_result$1, #15:$merged$1
+block #13:
+  $numel_result$2 = call numel [INT] I$1
+  $one$6 = 1
+  $horzcat_result$2 = call horzcat [StaticMatrixType - INT ([Matrix Shape: [1, 2], Dims: 1])] $numel_result$2, $one$6
+block #14:
+  
+block #15:
+  $merged$1 = phi #13:$horzcat_result$2, #14:$I_size$1

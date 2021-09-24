@@ -1,0 +1,11 @@
+Function deletion
+block #0:
+  line 1
+  x$1 = arg 0
+  line 2
+  $x_index1$1 = 1
+  $non_colon_index$1 = 0
+  $num_indices$1 = 2
+  x$2 = untyped_call MATISSE_delete x$1, $x_index1$1, $non_colon_index$1, $num_indices$1
+  line 3
+  x$ret = x$2

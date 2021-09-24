@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<joinpoints root_class="app" root_alias="app">
+	<joinpoint class="app" tooltip="Represents the entire application">
+		<select class="file" tooltip="Selects the files of code of the application." />
+	</joinpoint>
+	<joinpoint class="file" tooltip="Represents a file of code">
+		<select class="function" tooltip="Selects the functions in this file" />
+		<select class="section" />
+		<select class="comment" />
+	</joinpoint>
+	<joinpoint class="function" tooltip="Represents a MATLAB function">
+		<select class="var" />
+		<select alias="input" class="var" tooltip="Selects the arguments of the function"/>
+		<select alias="output" class="var" tooltip="Selects the outputs (returned variables) of the function"/>
+		<select class="body" />
+		<select alias="header" class="functionHeader" />
+		<select alias="headerComment" class="comment" />
+	</joinpoint>
+	<joinpoint class="functionHeader" tooltip="Represents the declaration of the function">
+	</joinpoint>
+	<joinpoint class="body" tooltip="Represents a block of code">
+		<select alias="first" class="statement" tooltip="Gets the first statement"/>
+		<select alias="last" class="statement"/>
+		<select class="statement" />
+		<select class="assignment" />
+		<select class="var" />
+		<select class="loop" />
+		<select class="if" />
+		<select class="section" />
+		<select class="comment" />
+		<select class="call" />
+		<select class="operator" />
+		<select class="globalDeclaration" />
+	</joinpoint>
+	
+	<joinpoint class="if" tooltip="Represents an if statement">
+	    <select alias="header" class="statement"/>
+		<select alias="condition" class="expression"/>
+		<select alias="then" class="body"/>
+		<select class="elseif" />
+		<select class="else"/>
+		<!--  <select alias="else" class="body"/>  -->
+	</joinpoint>
+	<joinpoint class="elseif" tooltip="Represents an elseif statement">
+		<select alias="condition" class="expression"/>
+		<select class="body" />
+	</joinpoint>
+	<joinpoint class="else" tooltip="Represents an else">
+		<select class="body" />
+	</joinpoint>
+	<joinpoint class="loop" tooltip="Represents a loop statement">
+		<select alias="control" class="var"/>
+		<select alias="expr" class="expression" />
+		<select alias="init" class="expression"/>
+		<select alias="step" class="expression"/>
+		<select alias="cond" class="expression"/>
+		<select alias="header" class="statement"/>
+		<select class="body" />
+	</joinpoint>
+	<joinpoint class="expression" tooltip="Represents an expression">
+		<select class="var" />
+	</joinpoint>
+	<joinpoint class="call" extends="expression">
+		<select alias="argument" class="expression"/>
+	</joinpoint>
+	<joinpoint class="arrayAccess" extends="expression">
+		<select alias="lhs" class="expression" />
+	</joinpoint>
+	<joinpoint class="statement" />
+	<joinpoint class="var" extends="expression" />
+	<joinpoint class="section" />
+	<joinpoint class="comment" />
+	
+	<joinpoint class="assignment" extends="statement">
+		<select alias="lhs" class="expression" />
+		<select alias="rhs" class="expression" />
+	</joinpoint>
+	
+	<joinpoint class="operand" extends="expression">
+	</joinpoint>
+	
+	<joinpoint class="operator" extends="expression">
+		<select class="operand"/>
+	</joinpoint>
+	
+	<joinpoint class="globalDeclaration" extends="statement" tooltip="A global variable declaration.">
+		<select class="var" tooltip="Select the variables declared as globals" />
+	</joinpoint>
+	
+</joinpoints>

@@ -1,0 +1,3 @@
+block #0:
+  line 1
+  %!specialize A

@@ -1,0 +1,5 @@
+multi
+[a, b]
+(x)
+a = x;
+b = x;

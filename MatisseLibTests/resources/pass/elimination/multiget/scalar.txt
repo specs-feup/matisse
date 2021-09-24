@@ -1,0 +1,7 @@
+block #0:
+  line 123
+  A$1 = arg 0
+  A$2 = arg 1
+  A$3 = arg 2
+  y$1 = get A$1, A$2, A$3
+  y$ret = y$1

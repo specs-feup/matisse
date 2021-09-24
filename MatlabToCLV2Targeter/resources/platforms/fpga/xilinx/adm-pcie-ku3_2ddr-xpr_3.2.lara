@@ -1,0 +1,7 @@
+aspectdef PlatformSettings
+	select app end
+	apply
+		def program_compiled_name = "program.xclbin";
+		def load_program_from_source = false;
+	end
+end

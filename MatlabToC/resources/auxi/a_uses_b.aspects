@@ -1,0 +1,15 @@
+/*
+ Types for functions in c_test folder.
+*/
+
+scope a {
+	a1:int32
+	a2:double
+}
+
+scope b {
+	a1:int32
+	a2:int32
+}
+
+sasdda

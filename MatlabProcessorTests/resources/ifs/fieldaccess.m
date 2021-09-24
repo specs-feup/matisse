@@ -1,0 +1,1 @@
+if A.sel(i, j, level) 3; end

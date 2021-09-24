@@ -1,0 +1,28 @@
+block #0:
+  $dim2$1 = 2
+  $size$1 = call size [INT] A$1, $dim2$1
+  $output_size$1 = 0
+  $new_size$1 = call plus [INT] $output_size$1, $size$1
+  $one$1 = 1
+  $initial$1 = call matisse_new_array_from_dims [DynamicMatrixType(INT, shape=[Matrix Shape: [-1, 1], Dims: 1])] $one$1, $new_size$1
+  $index$1 = 1
+  for $one$1, $one$1, $size$1, #4, #5
+block #1:
+  
+block #2:
+  
+block #3:
+  
+block #4:
+  $matrix$1 = phi #0:$initial$1, #4:$matrix$2
+  $index$2 = phi #0:$index$1, #4:$index$3
+  $iter$1 = iter
+  $value$1 = simple_get A$1, $iter$1
+  $matrix$2 = simple_set $matrix$1, $index$2, $value$1
+  $index$3 = call plus [INT] $index$2, $one$1
+block #5:
+  $matrix$3 = phi #0:$initial$1, #4:$matrix$2
+  $index$4 = phi #0:$index$1, #4:$index$3
+  A$2 = $matrix$3
+  y$1 = 1
+  branch y$1, #1, #2, #3

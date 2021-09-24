@@ -1,0 +1,4 @@
+block #0:
+  $foo = 1
+  X$1 = $foo
+  y$ret = X$1

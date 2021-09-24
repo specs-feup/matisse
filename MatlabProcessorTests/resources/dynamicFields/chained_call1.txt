@@ -1,0 +1,5 @@
+CompositeAccessCall
+  DynamicFieldAccess
+    Identifier: a
+    MatlabCharArray: b
+  MatlabNumber: 2

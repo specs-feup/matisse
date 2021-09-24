@@ -1,0 +1,1 @@
+A = vertcat(horzcat(B, C), horzcat(D, E));

@@ -1,0 +1,17 @@
+block #0:
+  $a$1 = 10
+  $X$1 = call matisse_new_array_from_dims [DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [10, 10], Dims: 2])] $a$1, $a$1
+  $one$1 = 1
+  for $one$1, $one$1, $a$1, #1, #2
+block #1:
+  $X$2 = phi #0:$X$1, #4:$X$3
+  $i$1 = iter
+  for $one$1, $one$1, $a$1, #3, #4
+block #2:
+  $X$4 = phi #0:$X$1, #4:$X$3
+block #3:
+  $X$5 = phi #1:$X$2, #3:$X$6
+  $j$1 = iter
+  $X$6 = simple_set $X$5, $i$1, $j$1, $one$1
+block #4:
+  $X$3 = phi #1:$X$2, #3:$X$6

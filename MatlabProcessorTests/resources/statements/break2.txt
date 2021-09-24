@@ -1,0 +1,17 @@
+Script
+  Statement: Block (line 7)
+    Statement: ParFor (line 1)
+      Identifier: i
+      Operator: :
+        MatlabNumber: 1
+        MatlabNumber: 10
+    Statement: Block (line 6)
+      Statement: SimpleFor (line 2)
+        Identifier: j
+        Identifier: i
+      Statement: Block (line 5)
+        Statement: If (line 3)
+          ReservedWord: if
+          Identifier: j
+        Statement: Break (line 4;)
+          ReservedWord: break

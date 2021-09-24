@@ -1,0 +1,14 @@
+ClassFile
+  Class
+    Statement: Block (line 6)
+      Statement: Classdef (line 1)
+        Attributes
+        Identifier: x_methods
+        BaseClasses
+      Statement: Block (line 5)
+        Statement: Methods (line 2)
+        Statement: Block (line 4)
+          Statement: FunctionDeclaration (line 3)
+            Outputs
+            Identifier: f
+            FunctionInputs

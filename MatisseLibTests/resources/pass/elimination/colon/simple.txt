@@ -1,0 +1,13 @@
+block #0:
+  $foo = arg 0
+  X$2 = 1
+  $one$1 = 1
+  $X$1 = call matisse_new_array_from_dims [DynamicMatrixType(INT, shape=[Matrix Shape: [1, -1], Dims: 1])] $one$1, $foo
+  for $one$1, $one$1, $foo, #1, #2
+block #1:
+  $X$2 = phi #0:$X$1, #1:$X$3
+  $iter$1 = iter
+  $X$3 = simple_set $X$2, $iter$1, $iter$1
+block #2:
+  X$1 = phi #0:$X$1, #1:$X$3
+  y$ret = X$1

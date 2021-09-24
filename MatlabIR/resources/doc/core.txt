@@ -1,0 +1,403 @@
+JAVADOC_BEGIN:AccessCallNode
+
+ An accessCall, which can be an index access to a variable, or a function call (ex.: a(3)). The two cases are
+ ambiguous until runtime.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:AttributeNode
+
+ An attribute (used in classes).
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:AttributesNode
+
+ A list of attributes (used in classes).
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:BaseClassesNode
+
+ The list of base (super) classes in a classdef.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:CellAccessNode
+
+ A cell access (ex.: a{4}).
+ 
+ <p>
+ The first child is always an Identifier. Each remaining child is treated as a single expression inside the
+ parenthesis and is separated by commas.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:CellNode
+
+ Represents a Cell. Curly braces are used in cell array assignment statements. For example, A(2,1) = {[1 2 3; 4 5 6]},
+ or A{2,2} = ('str').
+ 
+ <p>
+ The children are always of type 'row'.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:ClassWordNode
+
+ Identifier in MatLab related to the class syntax.
+ 
+ <p>
+ The content is a String.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:ColonNotationNode
+
+ Colon notation (:) that is not used as an operator. E.g.: C{:}; A(:); A(:,J);
+ 
+ <p>
+ The content is a String with the literal representation of colon (:).
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:CommandNode
+
+ A Matlab command (ex.: ls ./d).
+ 
+ <p>
+ Has two or more children. The first children is always an Identifier, the remaining children are Strings representing
+ arguments of the command.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:CommentNode
+
+ A MatLab comment.
+ 
+ <p>
+ The content is a String.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:CompositeAccessCallNode
+
+ An accessCall, which can be an index access to a variable, or a function call (ex.: a(3)). The two cases are
+ ambiguous until runtime.
+ 
+ <p>
+ The first child can be a composite node, such as x.y(2).z. The remaining children represent the expression inside the
+ parenthesis that are separated by commas.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:DynamicFieldAccessNode
+
+ Dynamic Field access. S.(df) when S is a structure, accesses the contents of dynamic field df of that structure.
+ 
+ <p>
+ Dynamic field names are defined at runtime.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:DynamicFieldAccessSeparatorNode
+
+ Dynamic Field access. S.(df) when S is a structure, accesses the contents of dynamic field df of that structure.
+ 
+ <p>
+ Dynamic field names are defined at runtime.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:FieldAccessNode
+
+ Field access. S(m).f when S is a structure, accesses the contents of field f of that structure.
+ 
+ E.g., a.b.c(); a.b;
+ 
+ <p>
+ Each child is an element of the fieldAccess, separated by a dot in the MATLAB source.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:FunctionHandleNode
+
+ Used to form vectors and matrices. [6.9 9.64 sqrt(-1)] is a vector with three elements. Is always used on the left
+ side of an assignment.
+ 
+ <p>
+ The children are always of type 'row'.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:FunctionInputsNode
+
+ Represents a list of function inputs.
+ 
+ <p>
+ Children are Identifiers that represent the inputs. Can have no children.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:IdentifierNode
+
+ A Matlab identifier.
+ 
+ <p>
+ Must start with a letter, can have letters, numbers and underscores. Matlab has a limit of 64 characters per
+ identifier (it is being tested, if name has more than 64 characters, outputs a warning and accepts the name).
+ 
+ <p>
+ The content is a String with the literal representation of the identifier.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:InvokeNode
+
+ A literal invoke '!' symbol.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:LambdaNode
+
+ Represents an anonymous function.
+ 
+ <p>
+ Has two children, a FunctionInputs and an expression.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:MatlabNodeFactory
+
+ Utility methods for creating MatlabNodes.
+ 
+ @author Joao Bispo
+ 
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:MatlabNumberNode
+
+ Represents a MatLab number.
+ 
+ <p>
+ The content is a String representing the number.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:MatlabStringNode
+
+ A literal string.
+ 
+ <p>
+ The content is a String.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:MatrixNode
+
+ Used to form vectors and matrices. [6.9 9.64 sqrt(-1)] is a vector with three elements. Is always used on the left
+ side of an assignment.
+ 
+ <p>
+ The children are always of type 'row'.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:MetaClassNode
+
+ A Matlab meta class.
+ 
+ <p>
+ The content is a String with the literal representation of the identifier of the meta class.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:OperatorNode
+
+ Literal representation of a MatLab operator (see class Base.MatlabLanguage.MatlabOperator).
+ 
+ <p>
+ The content is a String.
+ 
+ <p>
+ Each children is an operand.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:OutputsNode
+
+ Represents a list of outputs.
+ 
+ <p>
+ Children represent the outputs, usually are Identifiers.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:ParenthesisNode
+
+ Parentheses are used to indicate precedence in arithmetic expressions in the usual way. They are used to enclose
+ arguments of functions in the usual way. They are also used to enclose subscripts of vectors and matrices in a manner
+ somewhat more general than usual. If X and V are vectors, then X(V) is [X(V(1)), X(V(2)), ..., X(V(n))]. The
+ components of V must be integers to be used as subscripts. An error occurs if any such subscript is less than 1 or
+ greater than the size of X.
+ 
+ <p>
+ Each children token of parenthesis is considered as a single, separate element. E.g., (1, 2, 3)
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:ReservedWordNode
+
+ Reserved word in MATLAB, as given by the command 'iskeyword' (see class Base.MatlabLanguage.ReservedKeyword).
+ 
+ <p>
+ The content is a String.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:RowNode
+
+ A row of a SquareBrackets or of a Cell.
+ 
+ <p>
+ Each children of the row is considered a single, separate element
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:SimpleAccessCallNode
+
+ An accessCall, which can be an index access to a variable, or a function call (ex.: a(3)). The two cases are
+ ambiguous until runtime.
+ 
+ <p>
+ The first child is always an Identifier. The remaining children represent the expression inside the parenthesis that
+ are separated by commas.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:UnusedVariableNode
+
+ Used to indicate a variable in a function declaration or output that is not used. Consider these two cases:<br/>
+ 
+ Case 1:
+ 
+ <pre>
+ function [x, y] = X(a, ~, b)
+    x = a;
+    y = b;
+ end
+ </pre>
+ 
+ Case 2:
+ 
+ <pre>
+ [~, a] = X(1, 2, 3);
+ </pre>
+ 
+ @author Lu?s Reis
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:MType
+
+ Types of the tokens in the MatLab tree representation.
+ 
+ <p>
+ If not specified, the content of the node is null.
+ 
+ <p>
+ Content in most tokens are strings, to increase compatibility with TOM Loria framework. <br>
+ Also, all types should be in this file, while TOM framework is used, because of generator.
+ 
+ @author Joao Bispo
+ 
+ 
+JAVADOC_END

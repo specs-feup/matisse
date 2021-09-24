@@ -1,0 +1,62 @@
+aspectdef SmartDefineTypes
+    var overrideTypes = {};
+    
+    function selectDefaultTypeFromName(name) {
+        var baseType = name.indexOf('int') >= 0 ? "int" : "double";
+        var isMatrix = name.charAt(0) >= 'A' && name.charAt(0) <= 'Z';
+        
+        var typeName = baseType;
+        if (isMatrix) {
+            if (name.indexOf('2d') >= 0) {
+                typeName += "[][]";
+            } else {
+                typeName += "[]*";
+            }
+        }
+        return typeName;
+    }
+    
+    function selectTypeFromName(name) {
+        if (name in overrideTypes) {
+            return overrideTypes[name];
+        }
+        return selectDefaultTypeFromName(name);
+    }
+    
+    select comment end
+    apply
+        var code = $comment.code;
+        if (code.startsWith('%type')) {
+            code = code.substring(5);
+        }
+        code = code.trim();
+        sections = code.split(':');
+        if (sections.length == 2) {
+            var varName = sections[0];
+            var varType = sections[1];
+            
+            overrideTypes[varName] = varType;
+        }
+    end
+
+    select function.input end
+    apply
+        var name = $input.name;
+        
+        var typeName = selectTypeFromName(name);
+        
+        def type = typeName;
+    end
+    condition $function.ftype === 'main_function' end
+
+    var globals = new Set();
+
+    select app.globalDeclaration.var end
+    apply
+        var name = $var.code;
+        if (!globals.contains(name)) {
+            $app.exec setGlobalType(name, selectTypeFromName(name));
+            globals.add(name);
+        }
+    end
+end

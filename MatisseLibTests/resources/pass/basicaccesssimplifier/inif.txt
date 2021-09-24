@@ -1,0 +1,19 @@
+block #0:
+  A$1 = arg 0
+  $numel = untyped_call numel A$1
+  $one = 1
+  for $one, $one, $numel, #1, #2
+block #1:
+  A$2 = phi #0:A$1, #4:A$5
+  $iter = iter
+  $ten = 10
+  $gt = untyped_call gt $iter, $ten
+  branch $gt, #2, #3, #4
+block #2:
+  A$3 = simple_set A$2, $iter, $one
+block #3:
+  A$4 = simple_set A$2, $iter, $ten
+block #4:
+  A$5 = phi #2:A$3, #3:A$4
+block #5:
+  A$ret = phi #0:A$1, #4:A$5

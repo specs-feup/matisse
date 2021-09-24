@@ -1,0 +1,5 @@
+Function simple
+block #0:
+  x$1 = arg 0
+  w$2 = 1
+  y$ret = w$2

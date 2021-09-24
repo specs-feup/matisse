@@ -1,0 +1,4 @@
+block #0:
+  $0 = arg 0
+  $1 = arg 1
+  y$ret = get $0, $1

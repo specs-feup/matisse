@@ -1,0 +1,64 @@
+	/**
+	 * Visits a function token and returns its attributes
+	 */
+	//private static boolean done = false;
+	%strategy insertBeforeByTomTokenReference(TomToken newToken, 
+					    int referenceID) extends `Fail()  {
+	    visit TomTokens {
+		list@List(befores*,
+			  middle,
+			  after*) ->{ 
+		    if(`middle.getUniqueIdentifier() == referenceID){
+			//System.out.println("SELECTED!");
+        		    //done = true;
+        		    //System.out.println("Inserting in " + `middle+"\n\n\n");
+        		    if(`middle.gettype().equals(TomAttributes.function_t)){
+        		      			    	
+					TomToken newMiddle = `OnceTopDown(insertBeforeFunction(newToken)).visit(`middle);
+					tomReferenceKeeper.put(`middle.getUniqueIdentifier(),`newMiddle.getUniqueIdentifier());
+					System.out.println("---> "+`befores);
+					TomTokens newList = `List(befores,newMiddle,after);
+					return newList;
+				}
+        		    	
+				TomTokens newList = `List(befores,newToken,middle,after);
+				return newList;
+        		    
+		    }
+		}
+	    }
+	}
+	/**/
+	
+	
+	/**/
+	public static TomToken insertBefore(TomToken tomStatement, TomToken reference, TomToken root) {
+		try {
+		    //done = false;
+		    //System.out.println("Modifying Tree");
+		    //System.out.println("Before "+`root);
+		    
+		    //TomToken modifiedTree = `mu(MuVar("x"), Choice(insertByTomTokenReference(tomStatement, 
+		//			    						     reference),All(MuVar("x")))).visit(root);
+		    System.out.println("Reference "+reference);
+		    int referenceID = reference.getUniqueIdentifier();
+		    if(tomReferenceKeeper.containsKey(`reference.getUniqueIdentifier()))
+			referenceID = tomReferenceKeeper.get(`reference.getUniqueIdentifier());
+		    TomToken modifiedTree = 	`OnceTopDown(insertBeforeByTomTokenReference(tomStatement, 
+		    					referenceID)
+		    	     ).visit(root);
+		    //System.out.println("After Inserting Comment" + modifiedTree);
+		    InsertCode iCode = new InsertCode(modifiedTree);
+		    // Sets the option display comment in the strategy
+		    //iCode.setOptions(InsertCode.OPTION_DISPLAY_COMMENT, "" + false);
+		    //modifiedTree = iCode.apply();
+
+		    //System.out.println("After Inserting code" + modifiedTree);
+		    return modifiedTree;
+		}
+		catch (Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+	/**/

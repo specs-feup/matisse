@@ -1,0 +1,1 @@
+say HMM using both brute force and forward-backward (actually just forward 

@@ -1,0 +1,14 @@
+aspectdef PlatformSettings
+	select app end
+	apply
+		def sum_reduction_strategy = "WORKGROUP_SUM_REDUCTION";
+		def matrix_copy_strategy = "CREATE_BUFFER_COPY_HOST_PTR";
+		def default_coarsening_strategy = "COARSE_SEQUENTIAL";
+		def default_fixed_work_groups_strategy = "FIXED_WORK_GROUPS_SEQUENTIAL";
+		def device_memory_management_strategy = "FINE_GRAINED_BUFFERS";
+		def svm_restrict_coalesced = false;
+
+		def svm_elimination_mode = "ELIMINATE_NO_ADDED_COPIES";
+		def svm_set_range_forbidden = true;
+	end
+end

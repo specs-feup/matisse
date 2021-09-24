@@ -1,0 +1,58 @@
+function size_aware
+block #0:
+  line 1
+  n$1+2+3+4+5 = arg 0
+  line 2
+  $matisse_new_array_from_dims_arg1$1 = 1
+  y1$2 = call matisse_new_array_from_dims [DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [1, -1], Dims: 1])] $matisse_new_array_from_dims_arg1$1, n$1+2+3+4+5
+  line 3
+  $start$1 = 1
+  $interval$1 = 1
+  s$4+5+6 = call size [DynamicMatrixType(INT, shape=[Matrix Shape: [1, 2], Dims: 1])] y1$2
+  y2$4 = call matisse_new_array [DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1], Dims: 2])] s$4+5+6
+  $start$2 = 1
+  $interval$2 = 1
+  $end$2 = call numel [INT] y2$4
+  for $start$1, $interval$1, n$1+2+3+4+5, #1, #2
+block #1:
+  y2$5 = phi #0:y2$4, #1:y2$6
+  line 3
+  y1$3 = phi #0:y1$2, #1:y1$4
+  i$2 = iter
+  line 4
+  $number$1 = 1
+  y1$4 = simple_set y1$3, i$2, $number$1
+  line 8
+  line 9
+  $mtimes_arg1$1 = simple_get y1$4, i$2
+  $mtimes_arg2$1 = 2
+  $mtimes$1 = call mtimes [DOUBLE weak] $mtimes_arg1$1, $mtimes_arg2$1
+  y2$6 = simple_set y2$5, i$2, $mtimes$1
+block #2:
+  y1$5+6+7 = phi #0:y1$2, #1:y1$4
+  line 10
+  y2$ret = phi #0:y2$4, #1:y2$6
+  line 11
+Types:
+	$end$2: INT
+	$interval$1: INT (1)
+	$interval$2: INT (1)
+	$matisse_new_array_from_dims_arg1$1: INT (1)
+	$mtimes$1: DOUBLE weak
+	$mtimes_arg1$1: DOUBLE weak
+	$mtimes_arg2$1: INT (2)
+	$number$1: INT (1)
+	$start$1: INT (1)
+	$start$2: INT (1)
+	i$2: INT
+	i$4: INT
+	n$1+2+3+4+5: DOUBLE
+	s$4+5+6: DynamicMatrixType(INT, shape=[Matrix Shape: [1, 2], Dims: 1])
+	y1$2: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [1, -1], Dims: 1])
+	y1$3: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [1, -1], Dims: 1])
+	y1$4: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [1, -1], Dims: 1])
+	y1$5+6+7: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [1, -1], Dims: 1])
+	y2$4: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1], Dims: 2])
+	y2$5: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1], Dims: 2])
+	y2$6: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1], Dims: 2])
+	y2$ret: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1], Dims: 2])

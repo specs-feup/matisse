@@ -1,0 +1,9 @@
+/*
+ Types for functions in c_test folder.
+*/
+
+scope c_sum {
+	a:int32
+	b:int32
+	result:double
+}

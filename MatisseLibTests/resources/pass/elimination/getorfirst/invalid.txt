@@ -1,0 +1,8 @@
+block #0:
+  $one$1 = 1
+  $X$1 = call matisse_new_array_from_dims [DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [1, -1], Dims: 1])] $one$1, $n$1
+  for $one$1, $one$1, $m$1, #1, #2
+block #1:
+  $iter$1 = iter
+  $X_value$1 = get_or_first $X$1, $iter$1
+block #2:

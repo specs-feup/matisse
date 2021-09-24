@@ -1,0 +1,5 @@
+DynamicFieldAccess
+  Identifier: a
+  SimpleAccessCall
+    Identifier: x
+    MatlabNumber: 1

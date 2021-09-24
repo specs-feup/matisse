@@ -1,0 +1,6 @@
+block #0:
+  A$1 = arg 0
+  x$1 = arg 1
+  $one = 1
+  $value$1 = 2
+  y$1 = simple_set A$1, x$1, $value$1

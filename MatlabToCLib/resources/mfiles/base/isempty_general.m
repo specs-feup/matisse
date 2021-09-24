@@ -1,0 +1,1 @@
+function result = isempty_general(X)	result = (numel(X) == 0);end

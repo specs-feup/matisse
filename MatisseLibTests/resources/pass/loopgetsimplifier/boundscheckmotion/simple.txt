@@ -1,0 +1,13 @@
+block #0:
+  A$1 = arg 0
+  $numel = arg 1
+  $one = 1
+  $numel_result$1 = call numel [INT] A$1
+  $is_size_sufficient$1 = call ge [LogicalType] $numel_result$1, $numel
+  validate_true $is_size_sufficient$1
+  for $one, $one, $numel, #1, #2
+block #1:
+  $iter = iter
+  o$1 = simple_get A$1, $iter
+block #2:
+  

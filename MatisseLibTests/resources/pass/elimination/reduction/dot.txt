@@ -1,0 +1,18 @@
+block #0:
+  A$1 = arg 0
+  A$2 = arg 1
+  $numel_result$1 = call numel [INT] A$1
+  $numel_result$2 = call numel [INT] A$2
+  validate_equal $numel_result$1, $numel_result$2
+  $one$1 = 1
+  $acc$1 = 0
+  for $one$1, $one$1, $numel_result$1, #1, #2
+block #1:
+  $acc$2 = phi #0:$acc$1, #1:$acc$3
+  $iter$1 = iter
+  $A_value$1 = simple_get A$1, $iter$1
+  $A_value$2 = simple_get A$2, $iter$1
+  $times_result$1 = call times [DOUBLE] $A_value$1, $A_value$2
+  $acc$3 = call plus [DOUBLE] $acc$2, $times_result$1
+block #2:
+  A$ret = phi #0:$acc$1, #1:$acc$3

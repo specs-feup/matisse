@@ -1,0 +1,63 @@
+function beforeloop
+block #0:
+  line 1
+  line 2
+  rows$1+2+3+4+5+6+7 = arg 0
+  cols$1+2+3+4+5+6+7 = arg 1
+  A$1+2+3+4+5+6+7 = arg 2
+  line 1
+  line 3
+  y$2 = A$1+2+3+4+5+6+7
+  line 4
+  $start$1 = 1
+  $interval$1 = 1
+  line 4
+  line 5
+  $start$2 = 1
+  $interval$2 = 1
+  line 5
+  line 6
+  $number$1 = 1
+  for $start$2, $interval$2, cols$1+2+3+4+5+6+7, #1, #4
+block #1:
+  y$3 = phi #0:y$2, #3:y$6
+  j$3 = iter
+  for $start$1, $interval$1, rows$1+2+3+4+5+6+7, #2, #3
+block #2:
+  y$4 = phi #1:y$3, #2:y$5
+  i$2+3+4 = iter
+  y$5 = simple_set y$4, i$2+3+4, j$3, $number$1
+block #3:
+  line 7
+  y$6 = phi #1:y$3, #2:y$5
+block #4:
+  line 8
+  y$ret = phi #0:y$2, #3:y$6
+  line 9
+  $start$3 = 1
+  $interval$3 = 1
+  for $start$3, $interval$3, rows$1+2+3+4+5+6+7, #5, #6
+block #5:
+  line 9
+block #6:
+  line 10
+  line 11
+Types:
+	$interval$1: INT (1)
+	$interval$2: INT (1)
+	$interval$3: INT (1)
+	$number$1: INT (1)
+	$start$1: INT (1)
+	$start$2: INT (1)
+	$start$3: INT (1)
+	A$1+2+3+4+5+6+7: DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [], Dims: -1])
+	cols$1+2+3+4+5+6+7: DOUBLE
+	i$2+3+4: INT
+	j$3: INT
+	rows$1+2+3+4+5+6+7: DOUBLE
+	y$2: DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [], Dims: -1])
+	y$3: DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [], Dims: -1])
+	y$4: DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [], Dims: -1])
+	y$5: DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [], Dims: -1])
+	y$6: DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [], Dims: -1])
+	y$ret: DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [], Dims: -1])

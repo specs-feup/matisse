@@ -1,0 +1,14 @@
+block #0:
+  A$1 = arg 0
+  B$1 = A$1
+  % A$ret = set_all A$1, B$1
+  $one$1 = 1
+  $A_numel$1 = call numel [INT] A$1
+  for $one$1, $one$1, $A_numel$1, #1, #2
+block #1:
+  $A$1 = phi #0:A$1, #1:$A$2
+  $iter$1 = iter
+  $B_value$1 = simple_get B$1, $iter$1
+  $A$2 = simple_set $A$1, $iter$1, $B_value$1
+block #2:
+  A$ret = phi #0:A$1, #1:$A$2

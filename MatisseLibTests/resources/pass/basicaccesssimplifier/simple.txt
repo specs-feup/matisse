@@ -1,0 +1,11 @@
+block #0:
+  A$1 = arg 0
+  $numel = untyped_call numel A$1
+  $one = 1
+  for $one, $one, $numel, #1, #2
+block #1:
+  A$2 = phi #0:A$1, #1:A$3
+  $iter = iter
+  A$3 = simple_set A$2, $iter, $one
+block #2:
+  A$ret = phi #0:A$1, #1:A$3

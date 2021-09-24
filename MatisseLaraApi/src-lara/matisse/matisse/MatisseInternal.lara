@@ -1,0 +1,12 @@
+/**
+ * @class
+ */
+var MatisseInternal = {};
+
+/**
+ * Returns the standard being used for compilation.
+ */
+MatisseInternal.resourceGetCurrentEnergy = function() {	
+	var resource = MatlabApiResource.GET_CURRENT_ENERGY.getResource();
+	return SpecsIo.getResource(resource);
+}

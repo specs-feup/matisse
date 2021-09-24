@@ -1,0 +1,20 @@
+block #0:
+  m$1 = arg 0
+  n$1 = arg 1
+  $start$1 = 1
+  $interval$1 = 1
+  y$1 = call matisse_new_array_from_dims [DynamicMatrixType(INT, shape=[Matrix Shape: [-1, -1], Dims: 2])] m$1, n$1
+  for $start$1, $interval$1, m$1, #1, #4
+block #1:
+  y$2 = phi #0:y$1, #3:y$5
+  i$2 = iter
+  for $start$1, $interval$1, n$1, #2, #3
+block #2:
+  y$3 = phi #1:y$2, #2:y$4
+  j$2 = iter
+  y$4 = simple_set y$3, i$2, j$2, i$2
+block #3:
+  y$5 = phi #1:y$2, #2:y$4
+block #4:
+  y$6 = phi #0:y$1, #3:y$5
+  y$ret = untyped_call f y$6

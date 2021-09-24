@@ -1,0 +1,6 @@
+$plus$1: 3
+$plus_arg1$1: 1
+$plus_arg2$1: 2
+x$1: 1
+y$2: 3
+y$ret: 3

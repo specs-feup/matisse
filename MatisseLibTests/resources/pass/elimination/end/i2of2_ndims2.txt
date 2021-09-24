@@ -1,0 +1,4 @@
+block #0:
+  A$1 = arg 0
+  $dim_2$1 = 2
+  y$ret = call size [INT] A$1, $dim_2$1

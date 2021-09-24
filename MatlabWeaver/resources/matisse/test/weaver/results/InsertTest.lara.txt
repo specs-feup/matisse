@@ -1,0 +1,45 @@
+% File: insert_test.m
+function insert_test()
+end
+
+function empty_function()
+   % Comment in previously empty function
+end
+
+function empty_loop()
+   for i = 1:10
+      % Comment in previously empty loop
+   end
+end
+
+function empty_if_else()
+   if true
+      % Comment in previously empty if
+   elseif false
+      % Comment in previously empty elseif
+   else
+      % Comment in previously empty else
+   end
+end
+
+function with_return()
+   if true
+      % Before true return
+      % insertReturn comment
+      return;
+      % After if return
+   else
+      % Before else return
+      % insertReturn comment
+      return;
+      % After else return
+   end
+   % Before function return
+   % insertReturn comment
+   return;
+   % After function return
+end
+
+function empty_function_for_return()
+   % insertReturn in empty function
+end

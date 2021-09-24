@@ -1,0 +1,24 @@
+/*
+ Types for functions in c_test folder.
+*/
+
+scope a {
+	a1:int32
+	a2:int32
+	
+	scope work {
+		b1:int32
+		b2:int32
+	}
+}
+
+scope b {
+	a1:int32
+	a2:int32
+	
+	scope work {
+		b1:int32
+		b2:int32
+	}
+}
+

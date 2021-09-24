@@ -1,0 +1,38 @@
+	int i;
+	int dimAcc = 1;
+	int index;
+	int* indexes;
+	
+	indexes = (int[<NUM_INDEXES>]){<INDEX_NAMES>};
+
+	index = indexes[0];
+	
+	if(<NUM_INDEXES> == 1) {
+		return index;
+	}
+		
+	if (<NUM_INDEXES> > t-><TENSOR_DIMS>) {
+		printf(
+				"ERROR: Number of given indexes (%d) is greater than the number of dimensions of the matrix (%d).",
+				<NUM_INDEXES>, t-><TENSOR_DIMS>);
+		exit(EXIT_FAILURE);
+	}
+	
+	for (i = 1; i < <NUM_INDEXES>; i++) {
+		dimAcc *= t-><TENSOR_SHAPE>[i - 1];
+		index += (indexes[i]) * dimAcc;
+	}
+
+	// If given less indexes than the number of dimensions, since 
+	// array access is zero based, does not need to do nothing more.
+	/*
+	if (<NUM_INDEXES> < t->dims) {
+		for (i = <NUM_INDEXES>; i < t->dims; i++) {
+			dimAcc *= t->shape[i - 1];
+			index += (1 - 1) * dimAcc;
+		}	
+	}
+	*/
+
+	
+	return index;

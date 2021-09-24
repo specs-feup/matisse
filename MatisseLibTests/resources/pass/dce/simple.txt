@@ -1,0 +1,8 @@
+Function f
+block #0:
+  x$1 = arg 0
+  $plus_arg1$1 = x$1
+  $plus_arg2$1 = 1
+  $plus$1 = untyped_call plus $plus_arg1$1, $plus_arg2$1
+  y$2 = $plus$1
+  y$ret = y$2

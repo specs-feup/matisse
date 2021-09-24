@@ -1,0 +1,5 @@
+CompositeAccessCall
+  CellAccess
+    Identifier: A
+    MatlabNumber: 1
+  MatlabNumber: 1

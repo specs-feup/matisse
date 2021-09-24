@@ -1,0 +1,13 @@
+block #0:
+  n$1 = arg 0
+  y$1 = !undefined
+  $start$1 = 1
+  $interval$1 = 1
+  for $start$1, $interval$1, n$1, #1, #2
+block #1:
+  y$2 = phi #0:y$1, #1:y$3
+  i$2 = iter
+  a$1 = call minus [INT] n$1, i$2
+  y$3 = set y$2, a$1, i$2
+block #2:
+  y$ret = phi #0:y$1, #1:y$3

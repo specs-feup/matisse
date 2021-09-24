@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<artifacts>
+    <!-- Attributes for all join points -->
+	<global>
+		<!--  attribute name="fileRoot"  type="AFile"/-->
+		<attribute name="uid" type="long"/>
+		<attribute name="ast" type="String"/>
+		<attribute name="xml" type="String"/>
+		<attribute name="code" type="String"/>
+		<attribute name="line" type="Integer"/>
+		<attribute name="ancestor" type="joinpoint">
+			<parameter name="type" type="String"/>
+		</attribute>	
+		<attribute name="parent" type="joinpoint" />
+		<attribute name="hasParent" type="boolean" />
+		<attribute name="chainAncestor" type="joinpoint"
+			tooltip="Looks for an ancestor joinpoint name, walking back on the joinpoint chain">
+			<parameter name="type" type="String" />
+		</attribute>
+		<attribute name="root" type="joinpoint" />
+		
+		<attribute name="astParent" type="joinpoint" />
+		<attribute name="astAncestor" type="joinpoint"
+			tooltip="Looks for an ancestor AST name, walking back on the AST">
+			<parameter name="type" type="String" />
+		</attribute>
+		<attribute name="astName" type="String" />
+		<attribute name="astChild" type="joinpoint">
+			<parameter name="index" type="Integer" />
+		</attribute>
+		<attribute name="descendants" type="joinpoint[]"
+			tooltip="Retrieves all descendants of the join point">
+		</attribute>
+		<attribute name="descendants" type="joinpoint[]"
+			tooltip="Retrieves the descendants of the given type">
+			<parameter name="type" type="String" />
+		</attribute>
+		<attribute name="descendantsAndSelf" type="joinpoint[]"
+			tooltip="Retrieves the descendants of the given type, including the node itself">
+			<parameter name="type" type="String" />
+		</attribute>
+		<attribute name="hasAstParent" type="boolean" />
+		<attribute name="astNumChildren" type="Integer" />
+		<attribute name="astChildren" type="joinpoint[]" />
+		
+	</global>
+	
+	<artifact class="app" >
+		<attribute name="hasFile"  type="boolean">
+			<parameter name="filename" type="String"/>
+		</attribute>
+	</artifact>	
+	
+	<!-- Attributes for each joinpoint -->
+	<artifact class="file" default="name">
+		<attribute name="name"  type="String"/>
+		<attribute name="absolutePath"  type="String"/>
+		<attribute name="mainFunction"  type="String"/>
+		<attribute name="mainFunctionJp"  type="joinpoint"/>
+	</artifact>
+	
+	<artifact class="function" default="name">
+		<attribute name="name" type="String"/>
+		<attribute name="ftype" type="{main_function,sub_function,nested_function}"/>
+		<attribute name="qualifiedName" type="String[]"/> <!-- java.util.List&lt;String&gt; -->
+		<!--  <attribute name="isMainFunction" type="boolean"/>
+		<attribute name="isSubFunction" type="boolean"/>  -->
+		<attribute name="numberOfOutputs" type="int"/>
+		<attribute name="numberOfInputs" type="int"/>
+		<attribute name="body" type="joinpoint" />
+		<attribute name="id" type="String" />	
+	</artifact>
+	
+	<artifact class="var" default="name">
+		<attribute name="name" type="String"/>
+		<attribute name="reference" type="{read,write,argument}"/>
+		<attribute name="is_read" type="boolean"/>
+		<attribute name="is_write" type="boolean"/>
+		<attribute name="isRead" type="boolean"/>
+		<attribute name="isWrite" type="boolean"/>
+		<attribute name="isInsideLoopHeader" type="boolean"/>
+		<attribute name="sym" type="Sym"/>
+	</artifact>
+	
+	<artifact class="section" default="label">
+		<attribute name="label" type="String"/>
+		<attribute name="args" type="String"/>
+		<!-- <attribute name="begin" type="String"/>
+		<attribute name="end" type="String"/>-->
+	 </artifact>
+	 <artifact class="comment" default="text">
+		<attribute name="text" type="String"/>
+	 </artifact>
+	<artifact class="loop" default="type">
+		<attribute name="type" type="{for,parfor,while}"/>
+		<attribute name="kind" type="{for,parfor,while}"/>
+		<attribute name="is_innermost" type="boolean"/>
+		<attribute name="is_outermost" type="boolean"/>
+		<attribute name="nestedLevel" type="int"/>
+		<attribute name="inductionVar" type="String"/>
+		<!--attribute name="canInterchange" type="boolean">
+		
+			<parameter name="loop2" type="ALoop"/>
+		</attribute-->
+	</artifact>
+	<artifact class="body">
+		<attribute name="numberOfStatements" type="int"/>
+		<attribute name="lastStatement" type="joinpoint"/>
+	</artifact>
+	
+	<artifact class="statement">
+		<attribute name="type" type="String"/>
+		<attribute name="display" type="boolean"/>
+	</artifact>
+	<artifact class="expression">
+		<attribute name="value" type="String"/>
+	</artifact>
+	<artifact class="call" default="name">
+		<attribute name="name" type="String"/>
+		<attribute name="type" type="{conventional,script,implicit}"/>
+		<attribute name="num_args" type="int"/>
+		<attribute name="arguments" type="String[]"/>
+	</artifact>
+	<artifact class="arrayAccess" default="name">
+		<attribute name="num_args" type="int"/>
+	</artifact>
+	
+	<artifact class="operator" default="symbol">
+		<attribute name="arity" type="int" tooltip="1 for unary operators and 2 for binary operators" />
+		<attribute name="symbol" type="String"/>
+		<attribute name="leftOperand" type="String"/>
+		<attribute name="rightOperand" type="String"/>
+		<attribute name="operands" type="String[]"/>
+	</artifact>
+	
+	<artifact class="operand">
+		<attribute name="index" type="int"/>
+	</artifact>
+	
+	
+	<object name="Sym">
+		<attribute name="name" type="String"/>
+		<attribute name="type" type="String"/>
+	</object>
+</artifacts>

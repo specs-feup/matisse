@@ -1,0 +1,14 @@
+block #0:
+  A$1 = arg 0
+  $start$1 = 2
+  $step$1 = 1
+  $ndims_result$1 = call ndims [INT] A$1
+  $size$1 = 1
+  for $start$1, $step$1, $ndims_result$1, #1, #2
+block #1:
+  $size$2 = phi #0:$size$1, #1:$size$3
+  $iter$1 = iter
+  $dim$1 = call size [INT] A$1, $iter$1
+  $size$3 = call times [INT] $size$2, $dim$1
+block #2:
+  y$ret = phi #0:$size$1, #1:$size$3

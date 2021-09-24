@@ -1,0 +1,8 @@
+function simple
+block #0:
+  A$1 = arg 0
+  B$1 = arg 1
+  $A$1 = A$1
+Types:
+	$A$1: DOUBLE
+	

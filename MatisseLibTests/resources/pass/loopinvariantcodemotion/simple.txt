@@ -1,0 +1,7 @@
+block #0:
+  $one$1 = 1
+  $number$1 = 123
+  for $one$1, $one$1, $one$1, #1, #2
+block #1:
+
+block #2:

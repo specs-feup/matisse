@@ -1,0 +1,74 @@
+import lara.code.LoggerBase;
+
+import lara.util.IdGenerator;
+
+/**
+ * Adds code that prints the message built up to that point with the append() functions.
+ *
+ * TODO: Improve this comment, add JSDoc tags
+ */
+Logger.prototype.log = function($jp, insertBefore) {
+	// Validate join point
+	if(!this._validateJp($jp, "function")) {
+		return undefined;
+	}
+
+	var code = this._log_code($jp.chainAncestor("function"));
+	if (code === undefined) {
+        return;
+    }
+
+    //call LoggerInsert($jp, code, insertBefore);
+    var insertBeforeString = insertBefore ? "before" : "after";
+	
+    $jp.insert(insertBeforeString, code);
+
+    // Clear internal state
+    this._clear();
+	
+    return this;
+}
+
+Logger.prototype._log_code = function($function) {
+	if(this.filename === undefined) {
+		return this._log_code_console();
+	}
+	
+	return this._log_code_file($function);
+}
+
+Logger.prototype._log_code_console = function() {
+	return this._printfFormat("fprintf", undefined, undefined, '\'');
+}
+
+Logger.prototype._log_code_file = function($function) {
+
+	var fileVar = this._log_file_setup($function);
+
+	return this._printfFormat("fprintf", "(" + fileVar + ', \'', undefined, '\'');
+}
+
+Logger.prototype._log_file_setup = function($function) {
+
+	var declaredName = this._declareName($function.id, function(){return IdGenerator.next("log_file_");});
+	var varname = declaredName.name;
+	
+	if(declaredName.alreadyDeclared) {
+		return varname;
+	}
+
+
+	// Declare and open file
+	//var code = varname + ' = fopen(\'' + this.filename + '\',\'at+\');';
+	var code = _matisse_logger_filename_declaration(varname, this.filename);
+	
+    // Add code at beginning of the function
+    $function.body.insertBefore(code);
+
+	// Close file at the end of the function
+	$function.body.insertAfter("fclose(" + varname + ");");
+	
+	return varname;
+}
+
+codedef _matisse_logger_filename_declaration(varname, filename) %{[[varname]] = fopen('[[filename]]','at+');}% end

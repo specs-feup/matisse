@@ -1,0 +1,8 @@
+ClassFile
+  Class
+    Statement: Block (line 2)
+      Statement: Classdef (line 1)
+        Attributes
+        Identifier: extension
+        BaseClasses
+          Identifier: y

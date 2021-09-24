@@ -1,0 +1,98 @@
+  public static void insert(MatlabToken joinpointReference, String when, Map<?, ?> parameters) {
+
+	MatlabToken fileToken = generateTokenStatement(parameters);
+
+	if(fileToken == null){
+	    System.err.println("Code could not be parsed");
+	    System.exit(-1);
+	}
+	
+	List<MatlabToken> tokenChilds = fileToken.getChildren();
+	
+	MatlabToken scriptToken = tokenChilds.get(0);
+	tokenChilds = scriptToken.getChildren();
+	if (joinpointReference.getType() == MTokenType.Function) {
+	    joinpointReference = StatementUtils.getFirstToken(StatementType.FunctionDeclaration,
+		    joinpointReference.getChildren());
+	   // System.out.println("NAME:"
+		//    + MatlabTokenContent.getFunctionDeclarationName(joinpointReference));
+	}
+	MatlabToken statementParentOfSelect = StatementUtils.getStatement(joinpointReference);
+	
+	switch(When.valueOf(when)){
+	case before:
+	    for(MatlabToken newStatement: tokenChilds)
+		TokenWithParentUtils.insertBefore(statementParentOfSelect, newStatement);
+	    break;
+	case after:
+	    for(int i = tokenChilds.size()-1; i >= 0; i--){
+		MatlabToken newStatement = tokenChilds.get(i); 
+		TokenWithParentUtils.insertAfter(statementParentOfSelect, newStatement);
+	    }
+	    break;
+	case around:
+	    for(MatlabToken newStatement: tokenChilds)
+		TokenWithParentUtils.insertAfter(statementParentOfSelect, newStatement);
+	    break;
+	}
+	
+	
+	
+	
+/*
+	// String tag =
+	// "@insertion insert before file=\"C:\\Users\\Tiago Carvalho\\Workspace_output\\MatisseWeaver\\out\\code1.code\" funcName=latnrm";
+	MatlabToken comment = new MatlabToken(MTokenType.Comment, null, insertTag.toString());
+	// tag);
+
+	List<MatlabToken> childToken = new ArrayList<MatlabToken>();
+	childToken.add(comment);
+	StatementData sd = new StatementData(0, false, StatementType.Comment);
+	
+
+	MatlabToken newStatement = new MatlabToken(MTokenType.Statement, childToken, sd);
+	// System.out.println("JOINPOINT:"+joinpointReference.getType());
+	if (joinpointReference.getType() == MTokenType.Function) {
+	    joinpointReference = StatementUtils.getFirstToken(StatementType.FunctionDeclaration,
+		    joinpointReference.getChildren());
+	    System.out.println("NAME:"
+		    + MatlabTokenContent.getFunctionDeclarationName(joinpointReference));
+	}
+
+	MatlabToken statementParentOfSelect = StatementUtils.getStatement(joinpointReference);
+	// System.out.println("STATEMENT:" +statementParentOfSelect);
+	// System.out.println("STAT BEFORE:\n"+statementParentOfSelect.getParent());
+	TokenWithParentUtils.insertBefore(statementParentOfSelect, newStatement);
+*/
+    }
+
+    /**
+     * Generates a MatlabToken of the inserting script, according to the parameters
+     * specified
+     * 
+     * @param parameters
+     *            map containing the "code" location and the replacements needed
+     * @return a MatlabToken
+     */
+    private static MatlabToken generateTokenStatement(Map<?, ?> parameters) {
+	String codeSource = (String) parameters.get("code");
+	File codeFile = new File(codeSource);
+	if (!codeFile.exists()) { // TODO - Error messages and proceeds
+	    System.err.println("Code file " + codeSource + " not found!");
+	    System.exit(-1);
+	}
+
+	String codeStr = IoUtils.read(codeFile);
+	for (Object param : parameters.keySet()) {
+	    String paramStr = (String) param;
+	    String paramValue = parameters.get(param).toString();
+	    while(codeStr.contains(paramStr))
+		codeStr = codeStr.replace(paramStr, paramValue);
+	}
+	
+	String defaultScriptName = MatlabProcessorUtils.getDefaultName(codeFile);
+
+	MatlabToken returnValue = MatlabProcessorUtils.fromMFile(codeStr, defaultScriptName);
+	//System.out.println(returnValue);
+	return returnValue;
+    }

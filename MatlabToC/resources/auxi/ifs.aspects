@@ -1,0 +1,6 @@
+
+scope ifs {
+	a1:int32
+	a2:int32
+
+}

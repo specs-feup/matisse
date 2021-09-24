@@ -1,0 +1,34 @@
+block #0:
+  X$1 = 1
+  X$2 = 2
+  $output_size$1 = 2
+  $one$1 = 1
+  $initial$1 = call matisse_new_array_from_dims [DynamicMatrixType(INT, shape=[Matrix Shape: [2, 1], Dims: 1])] $one$1, $output_size$1
+  $index$1 = 1
+  $matrix$1 = simple_set $initial$1, $index$1, X$1
+  $index$2 = 2
+  $matrix$2 = simple_set $matrix$1, $index$2, X$2
+  $index$3 = 3
+  X$3 = $matrix$2
+  $output_size$2 = 4
+  $one$2 = 1
+  $initial$2 = call matisse_new_array_from_dims [DynamicMatrixType(INT, shape=[Matrix Shape: [4, 1], Dims: 1])] $one$2, $output_size$2
+  $index$4 = 1
+  $matrix$3 = simple_set $initial$2, $index$4, X$1
+  $index$5 = 2
+  $loop_size$1 = 2
+  for $one$2, $one$2, $loop_size$1, #1, #2
+block #1:
+  $matrix$4 = phi #0:$matrix$3, #1:$matrix$5
+  $index$6 = phi #0:$index$5, #1:$index$7
+  $iter$1 = iter
+  $value$1 = simple_get X$3, $iter$1
+  $matrix$5 = simple_set $matrix$4, $index$6, $value$1
+  $index$7 = call plus [INT] $index$6, $one$2
+block #2:
+  $matrix$6 = phi #0:$matrix$3, #1:$matrix$5
+  $index$8 = phi #0:$index$5, #1:$index$7
+  $matrix$7 = simple_set $matrix$6, $index$8, X$2
+  $index$9 = call plus [INT] $index$8, $one$2
+  $t = $matrix$7
+  y$1 = 1

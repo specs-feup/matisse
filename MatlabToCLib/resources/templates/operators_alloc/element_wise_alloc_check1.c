@@ -1,0 +1,1 @@
+// Check if matrix dimensions agreeif (<CALL_IS_SAME_SHAPE>(<MATRIX1>, <MATRIX2>-><MATRIX_SHAPE>, <MATRIX2>-><MATRIX_DIMS>) == 0) {	printf("Matrix dimensions must agree.\n");	exit(EXIT_FAILURE);}

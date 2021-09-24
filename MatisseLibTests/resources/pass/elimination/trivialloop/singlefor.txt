@@ -1,0 +1,16 @@
+block #0:
+  $init = 1
+  $body = $init
+  $bar = $start
+  branch $body, #1, #2, #3
+block #1:
+
+block #2:
+
+block #3:
+  $loopend = 1
+  $afterloop = $body
+  for $init, $init, $afterloop, #4, #5
+block #4:
+  $2 = phi #3:$init, #4:$2
+block #5:

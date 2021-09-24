@@ -1,0 +1,13 @@
+aspectdef JavaDocExtractor
+
+	input packageName="org.specs.MatlabIR.MatlabNode.nodes.statements" end
+	select app.package{packageName}.class end
+	apply
+		// Clean javadoc
+		javadoc = $class.javadoc;
+		println("JAVADOC_BEGIN:"+$class.name+"\n" + javadoc + "JAVADOC_END\n");
+//		println("/**");
+	//	println($class.name +":\n"+$class.javadoc);
+		//println("**/");
+	end
+end

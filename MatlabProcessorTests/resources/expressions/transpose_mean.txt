@@ -1,0 +1,5 @@
+Operator: '
+  SimpleAccessCall
+    Identifier: mean
+    Operator: '
+      Identifier: vectors

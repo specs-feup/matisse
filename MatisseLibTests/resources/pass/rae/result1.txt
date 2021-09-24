@@ -1,0 +1,3 @@
+block #0:
+  y$ret = arg 0
+  x$ret = 1

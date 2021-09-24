@@ -1,0 +1,7 @@
+% varname type block instruction value
+$y$3 entry 1 2 false
+$y$3 exit 1 2 false
+$y$3 entry 3 1 true
+$y$3 exit 3 1 false
+$y$3 entry 3 2 false
+$y$3 exit 3 2 false

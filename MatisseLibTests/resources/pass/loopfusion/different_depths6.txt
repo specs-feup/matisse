@@ -1,0 +1,125 @@
+function different_depths6
+block #0:
+  line 1
+  line 2
+  s1$1+2+3+4+5+6+7+8+9 = arg 0
+  s2$1+2+3+4+5+6+7+8+9 = arg 1
+  s3$1+2+3+4+5+6+7+8+9 = arg 2
+  line 1
+  line 3
+  tmp1$2 = call zeros [DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])] s3$1+2+3+4+5+6+7+8+9, s2$1+2+3+4+5+6+7+8+9, s1$1+2+3+4+5+6+7+8+9
+  line 4
+  tmp2$2 = call zeros [DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])] s3$1+2+3+4+5+6+7+8+9, s2$1+2+3+4+5+6+7+8+9, s1$1+2+3+4+5+6+7+8+9
+  line 5
+  tmp3$2+3+4+5+6+7+8 = call zeros [DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])] s3$1+2+3+4+5+6+7+8+9, s2$1+2+3+4+5+6+7+8+9, s1$1+2+3+4+5+6+7+8+9
+  line 6
+  $start$1 = 1
+  $interval$1 = 1
+  $start$4 = 1
+  $interval$4 = 1
+  $end$4 = call numel [INT] tmp3$2+3+4+5+6+7+8
+  for $start$1, $interval$1, s1$1+2+3+4+5+6+7+8+9, #1, #6
+block #1:
+  $tmp3$1 = phi #0:tmp3$2+3+4+5+6+7+8, #5:$tmp3$2
+  line 6
+  tmp2$3 = phi #0:tmp2$2, #5:tmp2$8
+  tmp1$3 = phi #0:tmp1$2, #5:tmp1$8
+  i$2+3+4+5+6 = iter
+  line 7
+  $start$2 = 1
+  $interval$2 = 1
+  for $start$2, $interval$2, s2$1+2+3+4+5+6+7+8+9, #2, #5
+block #2:
+  $tmp3$3 = phi #1:$tmp3$1, #4:$tmp3$4
+  line 7
+  tmp2$4 = phi #1:tmp2$3, #4:tmp2$7
+  tmp1$4 = phi #1:tmp1$3, #4:tmp1$7
+  j$3+4+5 = iter
+  line 8
+  $start$3 = 1
+  $interval$3 = 1
+  for $start$3, $interval$3, s3$1+2+3+4+5+6+7+8+9, #3, #4
+block #3:
+  tmp3$9 = phi #2:$tmp3$3, #3:tmp3$10
+  line 8
+  tmp2$5 = phi #2:tmp2$4, #3:tmp2$6
+  tmp1$5 = phi #2:tmp1$4, #3:tmp1$6
+  k$4 = iter
+  line 9
+  $plus_arg1$1 = call plus [INT] i$2+3+4+5+6, j$3+4+5
+  $plus$1 = call plus [INT] $plus_arg1$1, k$4
+  tmp1$6 = simple_set tmp1$5, k$4, j$3+4+5, i$2+3+4+5+6, $plus$1
+  line 10
+  $plus_arg1$3 = call plus [INT] i$2+3+4+5+6, j$3+4+5
+  $plus$2 = call plus [INT] $plus_arg1$3, k$4
+  tmp2$6 = simple_set tmp2$5, k$4, j$3+4+5, i$2+3+4+5+6, $plus$2
+  line 14
+  line 15
+  $mtimes_arg1$1 = simple_get tmp1$6, k$4, j$3+4+5, i$2+3+4+5+6
+  $mtimes_arg2$1 = simple_get tmp2$6, k$4, j$3+4+5, i$2+3+4+5+6
+  $mtimes$1 = call mtimes [DOUBLE weak] $mtimes_arg1$1, $mtimes_arg2$1
+  tmp3$10 = simple_set tmp3$9, k$4, j$3+4+5, i$2+3+4+5+6, $mtimes$1
+block #4:
+  $tmp3$4 = phi #2:$tmp3$3, #3:tmp3$10
+  line 11
+  tmp1$7 = phi #2:tmp1$4, #3:tmp1$6
+  tmp2$7 = phi #2:tmp2$4, #3:tmp2$6
+block #5:
+  $tmp3$2 = phi #1:$tmp3$1, #4:$tmp3$4
+  line 12
+  tmp1$8 = phi #1:tmp1$3, #4:tmp1$7
+  tmp2$8 = phi #1:tmp2$3, #4:tmp2$7
+block #6:
+  tmp1$9+10+11 = phi #0:tmp1$2, #5:tmp1$8
+  tmp2$9+10+11 = phi #0:tmp2$2, #5:tmp2$8
+  line 16
+  tmp3$ret = phi #0:tmp3$2+3+4+5+6+7+8, #5:$tmp3$2
+  line 17
+Types:
+	$end$4: INT
+	$interval$1: INT (1)
+	$interval$2: INT (1)
+	$interval$3: INT (1)
+	$interval$4: INT (1)
+	$mtimes$1: DOUBLE weak
+	$mtimes_arg1$1: DOUBLE weak
+	$mtimes_arg2$1: DOUBLE weak
+	$plus$1: INT
+	$plus$2: INT
+	$plus_arg1$1: INT
+	$plus_arg1$3: INT
+	$start$1: INT (1)
+	$start$2: INT (1)
+	$start$3: INT (1)
+	$start$4: INT (1)
+	$tmp3$1: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	$tmp3$2: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	$tmp3$3: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	$tmp3$4: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	i$2+3+4+5+6: INT
+	i$8: INT
+	j$3+4+5: INT
+	k$4: INT
+	s1$1+2+3+4+5+6+7+8+9: DOUBLE
+	s2$1+2+3+4+5+6+7+8+9: DOUBLE
+	s3$1+2+3+4+5+6+7+8+9: DOUBLE
+	tmp1$2: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp1$3: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp1$4: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp1$5: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp1$6: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp1$7: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp1$8: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp1$9+10+11: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp2$2: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp2$3: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp2$4: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp2$5: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp2$6: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp2$7: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp2$8: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp2$9+10+11: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp3$10: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp3$2+3+4+5+6+7+8: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp3$9: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+	tmp3$ret: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])

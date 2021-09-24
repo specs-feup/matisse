@@ -1,0 +1,10 @@
+function post_type_simple
+block #0:
+  x$1 = arg 0
+  $plus_arg2$2 = 1.2
+  y$ret = call plus [DOUBLE] x$1, $plus_arg2$2
+Types:
+	$plus_arg2$2: DOUBLE (1.2)
+	w$2: DOUBLE
+	x$1: DOUBLE
+	y$ret: DOUBLE

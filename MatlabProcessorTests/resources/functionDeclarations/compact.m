@@ -1,0 +1,1 @@
+function compact 1; end

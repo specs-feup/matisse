@@ -1,0 +1,18 @@
+ClassFile
+  Class
+    Statement: Block (line 7)
+      Statement: Classdef (line 1)
+        Attributes
+        Identifier: context_keywords
+        BaseClasses
+      Statement: Block (line 6)
+        Statement: Methods (line 2)
+        Statement: Block (line 5)
+          Statement: FunctionDeclaration (line 3)
+            Outputs
+              Identifier: properties
+            Identifier: f
+            FunctionInputs
+          Statement: Assignment (line 4;)
+            Identifier: properties
+            MatlabNumber: 1

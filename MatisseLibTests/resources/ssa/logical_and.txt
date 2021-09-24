@@ -1,0 +1,22 @@
+Function f
+block #0:
+  line 1
+  a$1 = arg 0
+  b$1 = arg 1
+  y$1 = !undefined
+  line 2
+  $MATISSE_short_circuit_and_left$1 = a$1
+  validate_boolean $MATISSE_short_circuit_and_left$1
+  branch $MATISSE_short_circuit_and_left$1, #1, #2, #3
+block #1:
+  $MATISSE_short_circuit_and_right$1 = b$1
+  validate_boolean $MATISSE_short_circuit_and_right$1
+  $MATISSE_short_circuit_and_right_as_logical$1 = untyped_call logical $MATISSE_short_circuit_and_right$1
+block #2:
+  $MATISSE_short_circuit_and_out$1 = builtin false
+block #3:
+  $not_arg1$1 = phi #1:$MATISSE_short_circuit_and_right_as_logical$1, #2:$MATISSE_short_circuit_and_out$1
+  $not$1 = untyped_call not $not_arg1$1
+  y$2 = $not$1
+  line 3
+  y$ret = y$2

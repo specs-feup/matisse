@@ -1,0 +1,9 @@
+block #0:
+  arg$1 = arg 0
+  branch arg$1, #1, #2, #3
+block #1:
+  $true = 1
+block #2:
+  $false = 2
+block #3:
+  $result = phi #1:$true, #2:$false

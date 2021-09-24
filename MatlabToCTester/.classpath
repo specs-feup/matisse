@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="matisse-vs-coder"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="src" path="resources"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/GuiHelper"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/SpecsUtils"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/MatlabProcessor"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/MatlabIR"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/XStreamPlus"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/JMatIOPlus"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/MatlabToC"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/CMainFunction"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/CIR"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/jOptions"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/MatisseInterface"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/MatlabAspectsParser"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/MatlabToCLib"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/MatlabWeaver"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/MatisseLib"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/CommonsLangPlus"/>
+	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=MatlabToCTester&amp;ivyXmlPath=ivy.xml&amp;confs=*"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

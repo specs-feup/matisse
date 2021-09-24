@@ -1,0 +1,62 @@
+Function while_break
+block #0:
+  line 1
+  a$1 = arg 0
+  b$1 = arg 1
+  c$1 = arg 2
+  y$1 = !undefined
+  line 2
+  $number$1 = 0
+  y$2 = $number$1
+  line 3
+  while #1, #11
+block #1:
+  y$3 = phi #0:y$2, #8:y$5, #10:y$3
+  c$2 = phi #0:c$1, #8:c$2, #10:c$2
+  b$2 = phi #0:b$1, #8:b$2, #10:b$2
+  a$2 = phi #0:a$1, #8:a$2, #10:a$2
+  $not_arg1$1 = c$2
+  $condition$1 = untyped_call not $not_arg1$1
+  branch $condition$1, #2, #3, #4
+block #2:
+  break
+block #3:
+
+block #4:
+  line 4
+  $gt_arg1$1 = a$2
+  $gt_arg2$1 = b$2
+  $condition$2 = untyped_call gt $gt_arg1$1, $gt_arg2$1
+  branch $condition$2, #5, #6, #7
+block #5:
+  line 5
+  $a$1 = a$2
+  y$4 = $a$1
+  line 6
+  break
+block #6:
+
+block #7:
+  line 7
+  line 8
+  $lt_arg1$1 = a$2
+  $lt_arg2$1 = b$2
+  $condition$3 = untyped_call lt $lt_arg1$1, $lt_arg2$1
+  branch $condition$3, #8, #9, #10
+block #8:
+  line 9
+  $plus_arg1$1 = y$3
+  $plus_arg2$1 = 1
+  $plus$1 = untyped_call plus $plus_arg1$1, $plus_arg2$1
+  y$5 = $plus$1
+  line 10
+  continue
+block #9:
+
+block #10:
+  line 11
+block #11:
+  line 12
+  y$6 = phi #2:y$3, #5:y$4
+  line 13
+  y$ret = y$6

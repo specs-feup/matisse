@@ -1,0 +1,75 @@
+
+	/*
+	 * for(Object arg: args) System.out.println(arg);
+	 */if (!(args[1] instanceof Map<?, ?>)) {
+		 throw new RuntimeException("Argument at index 1 has to be a map. It is a '"+args[1].getClass()+"'");
+	}
+
+	Map<?, ?> parameters = (Map<?, ?>) args[1];
+
+	String when = (String) args[0];
+
+	// Map<String, Object> parameters = (Map<String, Object>) args[1];
+	String codeSource = (String) parameters.get("code");
+	parameters.remove("code");
+
+	/**
+	 * insert tag structure "@<tagName> insert + when + file = + code +
+	 * (varName + = + varValue)*
+	 */
+	StringBuilder insertTag = new StringBuilder("@insertion insert ");
+	insertTag.append(when);
+	insertTag.append(" file=\"");
+	insertTag.append(codeSource);
+	insertTag.append("\"");
+
+	for (Object param : parameters.keySet()) {
+		insertTag.append(" ");
+		String paramStr = (String)param;
+		insertTag.append(paramStr.substring(2,paramStr.length()-2));
+		insertTag.append("=");
+		insertTag.append(parameters.get(param));
+	}
+//	try{
+	int i = 0;
+	System.out.println(i++);
+
+//	String tag = "@insertion insert before file=\"C:\\Users\\Tiago Carvalho\\Workspace_output\\MatisseWeaver\\out\\code1.code\" funcName=latnrm";
+	MatlabToken comment = new MatlabToken(MTokenType.Comment, null,
+			insertTag.toString());
+//	tag);
+	
+	List<MatlabToken> childToken = new ArrayList<MatlabToken>();
+	childToken.add(comment);
+	StatementData sd = new StatementData(0, false, StatementType.Comment);
+	System.out.println(i++);
+
+	MatlabToken newStatement = new MatlabToken(MTokenType.Statement,
+			childToken, sd);
+	//System.out.println("JOINPOINT:"+joinpointReference.getType());
+	if(joinpointReference.getType() == MTokenType.Function) {
+		joinpointReference = StatementUtils.getFirstToken(StatementType.FunctionDeclaration, joinpointReference.getChildren());
+		System.out.println("NAME:"+MatlabTokenContent.getFunctionDeclarationName(joinpointReference));
+	}
+	
+	MatlabToken statementParentOfSelect = StatementUtils
+			.getStatement(joinpointReference);
+	//System.out.println("STATEMENT:" +statementParentOfSelect);
+	//System.out.println("STAT BEFORE:\n"+statementParentOfSelect.getParent());
+	TokenWithParentUtils
+			.insertBefore(statementParentOfSelect, newStatement);
+	System.out.println("STAT AFTER:\n"+statementParentOfSelect.getParent().getParent());
+	System.out.println("STAT AFTER ROOOOT:\n"+root);
+	// System.out.println("trying to insert the following code into AST\n"+
+	// newStatement);
+	//System.out.println("AFTER: " + root.toString());
+	
+	System.out.println("BEFORE:\n"+MatlabGeneratorUtils.generate(root));
+	TomToken tomToken = TomTokenManager.generateTomToken(root);
+	InsertCode iCode = new InsertCode(tomToken);
+	// Sets the option display comment in the strategy
+	iCode.setOptions(InsertCode.OPTION_DISPLAY_COMMENT, "" + false);
+	tomToken = iCode.apply();
+	MatlabToken newRoot = TomTokenManager.generateMatlabToken(tomToken);
+	System.out.println("HASHHHHHHHHHHHH  "+newRoot.hashCode()+ "-> "+root.hashCode());
+	System.out.println("AFTER:\n"+MatlabGeneratorUtils.generate(root));

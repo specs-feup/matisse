@@ -1,0 +1,8 @@
+block #0:
+  $a = arg 0
+  $b = arg 1
+  $c = arg 2
+  $one = 1
+  $2 = untyped_call colon $one, $b
+  $4 = untyped_call colon $b, $c
+  $5 = range_get $a, $b, $one:$b, $b:$c

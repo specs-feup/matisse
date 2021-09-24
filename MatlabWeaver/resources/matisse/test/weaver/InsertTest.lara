@@ -1,0 +1,64 @@
+aspectdef InsertTest
+	
+
+	
+	select function{"empty_function"}.body end
+	apply
+		$body.insertBegin("% Comment in previously empty function");
+	end
+
+	select function{"empty_loop"}.loop.body end
+	apply
+		$body.insertBegin("% Comment in previously empty loop");
+	end
+
+	select function{"empty_if_else"}.if.then end
+	apply
+		$then.insertBegin("% Comment in previously empty if");
+	end
+
+	select function{"empty_if_else"}.if.elseif.body end
+	apply
+		$body.insertBegin("% Comment in previously empty elseif");
+	end
+
+	select function{"empty_if_else"}.if.else.body end
+	apply
+		$body.insertBegin("% Comment in previously empty else");
+	end	
+	
+	select function{"with_return"} end
+	apply
+		$function.insertReturn("% insertReturn comment");
+	end
+	
+	select function{"empty_function_for_return"} end
+	apply
+		$function.insertReturn("% insertReturn in empty function");
+	end
+	
+	
+	
+	
+	select app end
+	apply
+		println($app.code);
+	end
+
+	/*
+	select function end
+	apply
+		// Test descendants
+		for(var $node of $function.descendants) {
+			if($node.astName !== "BlockSt") {
+				continue;
+			}
+			
+			// $node is a Block statement
+			println("Block: " + $node.ast);
+			println("First child: " + $node.astChild(0).astName);
+		}		
+	end
+	*/
+	
+end

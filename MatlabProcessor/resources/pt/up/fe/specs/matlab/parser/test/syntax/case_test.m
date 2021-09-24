@@ -1,0 +1,6 @@
+function Y = case_test(A, B)
+    switch(1)
+    case 1, break
+    otherwise break
+    end
+end

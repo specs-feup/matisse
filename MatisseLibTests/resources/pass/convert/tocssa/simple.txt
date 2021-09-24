@@ -1,0 +1,9 @@
+Function simple
+block #0:
+  line 1
+  x$1 = arg 0
+  line 2
+  $x$1 = x$1
+  y$2 = $x$1
+  line 3
+  y$ret = y$2

@@ -1,0 +1,7 @@
+/*
+ Types for functions in c_test folder.
+*/
+
+scope fib {
+	n:int32
+}

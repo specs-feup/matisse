@@ -1,0 +1,52 @@
+function simple
+block #0:
+  line 1
+  X$1 = arg 0
+  a$1 = arg 1
+  line 2
+  $X_numel$1 = call numel [INT] X$1
+  $one$1 = 1
+  $plus_arg1$2 = call matisse_new_array_from_dims [DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [-1, 1], Dims: 1])] $X_numel$1, $one$1
+  $start$1 = 1
+  $step$1 = 1
+  $y$1 = call matisse_new_array_from_matrix [DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [-1, 1], Dims: 1])] $plus_arg1$2
+  $numel_result$1 = call numel [INT] $plus_arg1$2
+  $start$2 = 1
+  $step$2 = 1
+  for $start$1, $step$1, $X_numel$1, #1, #2
+block #1:
+  $y$3 = phi #0:$y$1, #1:$y$2
+  $plus_arg1$4 = phi #0:$plus_arg1$2, #1:$plus_arg1$3
+  $iter$1 = iter
+  $X_value$1 = simple_get X$1, $iter$1
+  $plus_arg1$3 = simple_set $plus_arg1$4, $iter$1, $X_value$1
+  $plus_arg1_value$1 = simple_get $plus_arg1$3, $iter$1
+  $y_value$1 = call plus [DOUBLE] $plus_arg1_value$1, a$1
+  $y$2 = simple_set $y$3, $iter$1, $y_value$1
+block #2:
+  $plus_arg1$1 = phi #0:$plus_arg1$2, #1:$plus_arg1$3
+  y$ret = phi #0:$y$1, #1:$y$2
+  line 3
+Types:
+	$X_numel$1: INT
+	$X_value$1: DOUBLE
+	$iter$1: INT
+	$iter$2: INT
+	$numel_result$1: INT
+	$one$1: INT (1)
+	$plus_arg1$1: DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [-1, 1], Dims: 1])
+	$plus_arg1$2: DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [-1, 1], Dims: 1])
+	$plus_arg1$3: DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [-1, 1], Dims: 1])
+	$plus_arg1$4: DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [-1, 1], Dims: 1])
+	$plus_arg1_value$1: DOUBLE
+	$start$1: INT (1)
+	$start$2: INT (1)
+	$step$1: INT (1)
+	$step$2: INT (1)
+	$y$1: DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [-1, 1], Dims: 1])
+	$y$2: DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [-1, 1], Dims: 1])
+	$y$3: DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [-1, 1], Dims: 1])
+	$y_value$1: DOUBLE
+	X$1: DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [], Dims: -1])
+	a$1: DOUBLE
+	y$ret: DynamicMatrixType(DOUBLE, shape=[Matrix Shape: [-1, 1], Dims: 1])

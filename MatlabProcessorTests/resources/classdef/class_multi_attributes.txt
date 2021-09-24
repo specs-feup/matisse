@@ -1,0 +1,13 @@
+ClassFile
+  Class
+    Statement: Block (line 2)
+      Statement: Classdef (line 1)
+        Attributes
+          Attribute
+            Identifier: Abstract
+            Identifier: true
+          Attribute
+            Identifier: Hidden
+            Identifier: false
+        Identifier: class_multi_attributes
+        BaseClasses

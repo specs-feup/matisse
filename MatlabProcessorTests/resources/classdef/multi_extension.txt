@@ -1,0 +1,11 @@
+ClassFile
+  Class
+    Statement: Block (line 2)
+      Statement: Classdef (line 1)
+        Attributes
+        Identifier: multi_extension
+        BaseClasses
+          Identifier: a
+          FieldAccess
+            Identifier: b
+            Identifier: c

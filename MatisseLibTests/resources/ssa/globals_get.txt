@@ -1,0 +1,14 @@
+Function f
+block #0:
+  line 1
+  a$1 = !undefined
+  y$1 = !undefined
+  line 2
+  line 3
+  $a$2 = read_global ^a
+  $a_arg1$1 = 1
+  $a$3 = read_global ^a
+  $a$1 = get $a$3, $a_arg1$1
+  y$2 = $a$1
+  line 4
+  y$ret = y$2

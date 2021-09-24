@@ -1,0 +1,10 @@
+aspectdef PlatformSettings
+	select app end
+	apply
+		def sum_reduction_strategy = "LOCAL_MEMORY_SUM_REDUCTION";
+		def matrix_copy_strategy = "CREATE_BUFFER_COPY_HOST_PTR";
+		def default_coarsening_strategy = "COARSE_SEQUENTIAL";
+		def default_fixed_work_groups_strategy = "FIXED_WORK_GROUPS_SEQUENTIAL";
+		def range_set_instruction_enabled = true;
+	end
+end

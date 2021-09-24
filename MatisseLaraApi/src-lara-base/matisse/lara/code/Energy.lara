@@ -1,0 +1,65 @@
+import lara.code.EnergyBase;
+import lara.code.Logger;
+import lara.util.StringSet;
+import matisse.MatisseInternal;
+
+
+/**
+ * Measures the energy spent during the execution of a given section of code.
+ * 
+ * @param $start [Mandatory] Starting point of the energy measure
+ * @param prefix Message that will appear before the energy measure. If undefined, empty string will be used.
+ * @param $end Ending point of the energy measure. If undefined, measure is done around starting point.
+ */
+Energy.prototype.measure = function($start, prefix, $end) {
+	var logger = new Logger(false, this.filename);
+
+    // Build prefix
+    if (prefix === undefined) {
+        prefix = "";
+    }
+
+	if($end === undefined) {
+		$end = $start;
+	}
+
+	var $app = $start.root;
+	if(!$app.hasFile("getCurrentEnergy.m")) {
+		$app.exec addFile("getCurrentEnergy.m", MatisseInternal.resourceGetCurrentEnergy());
+	} 
+
+
+	var startVar = IdGenerator.next("matisse_energy_start_");
+	var endVar = IdGenerator.next("matisse_energy_end_");
+	var intervalVar = IdGenerator.next("matisse_energy_");
+
+    var codeBefore = startVar + " = getCurrentEnergy();";
+	
+	// Invert order, since they will be inserted after, and MATISSE parses inserted literal code
+	var codeAfter = intervalVar + " = (" + endVar + " - " + startVar + ") / 1000000;";
+    codeAfter += endVar + " = getCurrentEnergy();\n";	
+	
+	// Build message
+    logger.append(prefix).appendDouble(intervalVar);
+    if (this.printUnit) {
+        logger.append(this.getPrintUnit());
+    }
+    logger.ln();
+
+    // Insert code
+    $start.insert before codeBefore;	
+	
+	 // Log time information
+	if(this.print) {
+	    logger.log($end);
+	}
+
+    // 'after' insertions must be done in reverse order		
+    $end.insert after codeAfter;
+
+    return intervalVar;
+}
+
+
+
+

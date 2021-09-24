@@ -1,0 +1,5 @@
+block #0:
+  $1 = arg 0
+  $2 = untyped_call zeros $1
+  $size = untyped_call size $2
+  $3 = call matisse_new_array_from_dims [DynamicMatrixType(INT, shape=[Matrix Shape: [-1, -1], Dims: 2])] $1

@@ -1,0 +1,19 @@
+import lara.code.Timer;
+
+aspectdef TimerTest
+	
+
+	// Instrument call to 'Calculate'
+	var timer = new Timer();
+
+	select call end
+	apply
+		timer.time($call, "Time:");
+	end
+	
+	select file end
+	apply
+		println($file.code);
+	end
+
+end

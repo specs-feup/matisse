@@ -1,0 +1,1 @@
+A = horzcat(B, C);

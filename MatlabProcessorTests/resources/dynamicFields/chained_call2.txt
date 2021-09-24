@@ -1,0 +1,5 @@
+CellAccess
+  DynamicFieldAccess
+    Identifier: a
+    MatlabCharArray: b
+  MatlabNumber: 1

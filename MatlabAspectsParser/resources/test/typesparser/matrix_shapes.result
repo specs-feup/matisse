@@ -1,0 +1,9 @@
+INT
+DynamicMatrixType(INT, shape=[Matrix Shape: [-1, 1], Dims: 1])
+DynamicMatrixType(INT, shape=[Matrix Shape: [-1, -1], Dims: 2])
+DynamicMatrixType(INT, shape=[Matrix Shape: [-1, -1, -1], Dims: 3])
+DynamicMatrixType(INT, shape=[Matrix Shape: [-1, 2, -1], Dims: 3])
+DynamicMatrixType(INT, shape=[Matrix Shape: [2, -1, -1], Dims: 3])
+DynamicMatrixType(INT, shape=[Matrix Shape: [-1, -1, 2], Dims: 3])
+StaticMatrixType - INT ([Matrix Shape: [3, 5, 7], Dims: 3])
+DynamicMatrixType(INT, shape=[Matrix Shape: [], Dims: -1])

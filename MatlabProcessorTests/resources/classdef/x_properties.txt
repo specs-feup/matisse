@@ -1,0 +1,11 @@
+ClassFile
+  Class
+    Statement: Block (line 5)
+      Statement: Classdef (line 1)
+        Attributes
+        Identifier: x_properties
+        BaseClasses
+      Statement: Block (line 4)
+        Statement: Properties (line 2)
+        Statement: Expression (line 3;)
+          Identifier: X

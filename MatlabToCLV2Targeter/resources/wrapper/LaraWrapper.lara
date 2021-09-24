@@ -1,0 +1,10 @@
+import PlatformSettings;
+<IMPORT_USER_ASPECT>
+
+aspectdef LaraWrapper
+	select app end
+	apply
+		call PlatformSettings();
+		<CALL_USER_ASPECT>
+	end
+end

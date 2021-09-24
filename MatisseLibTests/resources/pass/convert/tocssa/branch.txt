@@ -1,0 +1,26 @@
+Function branch
+block #0:
+  line 1
+  x$1 = arg 0
+  line 2
+  $gt_arg1$1 = x$1
+  $gt_arg2$1 = 0
+  $condition$1 = untyped_call gt $gt_arg1$1, $gt_arg2$1
+  branch $condition$1, #1, #2, #3
+block #1:
+  line 3
+  $number$1 = 1
+  y$2 = $number$1
+  $y$1 = parallel_copy y$2
+block #2:
+  line 5
+  $uminus_arg1$1 = 1
+  $uminus$1 = untyped_call uminus $uminus_arg1$1
+  y$3 = $uminus$1
+  $y$2 = parallel_copy y$3
+block #3:
+  line 6
+  $y$3 = phi #1:$y$1, #2:$y$2
+  y$4 = parallel_copy $y$3
+  line 7
+  y$ret = y$4

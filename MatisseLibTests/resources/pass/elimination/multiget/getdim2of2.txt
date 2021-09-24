@@ -1,0 +1,22 @@
+block #0:
+  line 123
+  A$1 = arg 0
+  A$2 = arg 1
+  A$3 = arg 2
+  $numel_result$1 = call numel [INT] A$3
+  $one$1 = 1
+  $y$1 = call matisse_new_array_from_dims [DynamicMatrixType(INT, shape=[Matrix Shape: [1, -1], Dims: 1])] $one$1, $numel_result$1
+  $start$1 = 1
+  $step$1 = 1
+  for $start$1, $step$1, $numel_result$1, #1, #2
+block #1:
+  line 123
+  $y$2 = phi #0:$y$1, #1:$y$3
+  $i$1 = iter
+  $index$1 = simple_get A$3, $i$1
+  $value$1 = get A$1, A$2, $index$1
+  $y$3 = simple_set $y$2, $i$1, $value$1
+block #2:
+  line 123
+  y$1 = phi #0:$y$1, #1:$y$3
+  y$ret = y$1

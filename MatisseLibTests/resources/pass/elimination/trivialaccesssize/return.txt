@@ -1,0 +1,5 @@
+block #0:
+  A$1 = arg 0
+  I$1 = arg 1
+  y$ret = access_size A$1, I$1
+  w$1 = untyped_call zeros y$ret

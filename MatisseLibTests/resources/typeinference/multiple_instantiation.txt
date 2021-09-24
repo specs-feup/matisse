@@ -1,0 +1,27 @@
+function multiple_instantiation
+block #0:
+  $zeros_arg1$1 = 1
+  $zeros_arg2$1 = 1
+  $f_arg1$1 = call zeros [DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [1, 1], Dims: 0])] $zeros_arg1$1, $zeros_arg2$1
+  $f$1 = call f [DOUBLE weak] $f_arg1$1
+  A$2 = $f$1
+  $zeros_arg1$2 = A$2
+  $zeros_arg2$2 = 1
+  $zeros_arg3$1 = str "int32"
+  $f_arg1$2 = call zeros [DynamicMatrixType(int32, shape=[Matrix Shape: [-1, 1], Dims: 1])] $zeros_arg1$2, $zeros_arg2$2, $zeros_arg3$1
+  $f$2 = call f [int32] $f_arg1$2
+  y$2 = $f$2
+  y$ret = y$2
+Types:
+	$f$1: DOUBLE weak
+	$f$2: int32
+	$f_arg1$1: DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [1, 1], Dims: 0])
+	$f_arg1$2: DynamicMatrixType(int32, shape=[Matrix Shape: [-1, 1], Dims: 1])
+	$zeros_arg1$1: INT (1)
+	$zeros_arg1$2: DOUBLE weak
+	$zeros_arg2$1: INT (1)
+	$zeros_arg2$2: INT (1)
+	$zeros_arg3$1: StringType
+	A$2: DOUBLE weak
+	y$2: int32
+	y$ret: int32

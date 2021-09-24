@@ -1,0 +1,69 @@
+import lara.code.TimerBase;
+import lara.code.Logger;
+
+import lara.util.IdGenerator;
+import lara.Platforms;
+import lara.util.TimeUnits;
+
+
+
+
+/**
+ * Times the code of a given section.
+ * 
+ * @param $start [Mandatory] Starting point of the time measure
+ * @param prefix Message that will appear before the time measure. If undefined, empty string will be used.
+ * @param $end Ending point of the time measure. If undefined, measure is done around starting point.
+ */
+Timer.prototype.time = function($start, prefix, $end) {
+/*
+    if (!this._timeValidate($start, $end, 'function')) {
+        return;
+    }
+*/
+	var logger = new Logger(false, this.filename);
+
+    // Build prefix
+    if (prefix === undefined) {
+        prefix = "";
+    }
+
+    if ($end === undefined) {
+        $end = $start;
+    }
+
+    // Declare variable for time interval, which uses calculation as initialization
+    //var timeIntervalVar = IdGenerator.next("matisse_time_");
+    //var $timingResultDecl;
+    // Add includes
+   
+
+    // get variable names
+    //var startVar = IdGenerator.next("kadabra_timing_start_");
+    var intervalVar = IdGenerator.next("matisse_time_");
+
+    var codeBefore = "tic;";
+    var codeAfter = intervalVar + " = toc;";
+
+    // Build message
+    logger.append(prefix).appendDouble(intervalVar);
+    if (this.printUnit) {
+        logger.append(this.timeUnits.getUnitsString());
+    }
+    logger.ln();
+
+    // Insert code
+    $start.insert before codeBefore;
+
+
+    // Log time information
+	if(this.print) {
+	    logger.log($end);
+	}
+
+
+    // 'after' insertions must be done in reverse order		
+    $end.insert after codeAfter;
+
+    return intervalVar;
+}

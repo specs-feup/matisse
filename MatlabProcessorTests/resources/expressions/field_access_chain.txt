@@ -1,0 +1,9 @@
+CompositeAccessCall
+  FieldAccess
+    CompositeAccessCall
+      FieldAccess
+        Identifier: x
+        Identifier: y
+      MatlabNumber: 1
+    Identifier: z
+  MatlabNumber: 2

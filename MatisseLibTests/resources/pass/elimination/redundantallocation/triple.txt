@@ -1,0 +1,7 @@
+block #0:
+  $value$1 = arg 0
+  $value$2 = arg 1
+  $value$3 = arg 2
+  A$1 = untyped_call ones $value$1, $value$2, $value$3
+  $partial_result$1 = call times [INT] $value$1, $value$2
+  $result$1 = call times [INT] $partial_result$1, $value$3

@@ -1,0 +1,12 @@
+scope test {
+
+ a_no_shape : int 
+ a_one_undef : int[] 
+ a_two_undef : int[][] 
+ a_three_undef : int[][][] 
+ a_undef_def_undef : int[][2][] 
+ a_def_undef_undef : int[2][][] 
+ a_undef_undef_def : int[][][2] 
+ a_def_def_def : int[3][5][7] 
+ a_undefined_shape : int[]*
+}

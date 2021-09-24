@@ -1,0 +1,16 @@
+aspectdef PlatformSettings
+	select app end
+	apply
+		def sum_reduction_strategy = "LOCAL_MEMORY_SUM_REDUCTION";
+		def matrix_copy_strategy = "CREATE_BUFFER_THEN_ENQUEUE_WRITE";
+		def default_coarsening_strategy = "COARSE_GLOBAL_ROTATION";
+		def range_set_instruction_enabled = true;
+		def try_use_schedule_cooperative = true;
+		def sub_group_size = 64;
+		def sub_group_as_warp_fallback = true;
+		def prefer_subgroup_cooperative = true;
+		def default_fixed_work_groups_strategy = "FIXED_WORK_GROUPS_GLOBAL_ROTATION";
+		def sum_local_reduction_strategy = "INTERLEAVED_SUM_REDUCTION";
+		def sum_sub_group_reduction_strategy = "INTERLEAVED_SUM_REDUCTION";
+	end
+end

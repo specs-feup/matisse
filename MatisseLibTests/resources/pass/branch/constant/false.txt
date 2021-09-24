@@ -1,0 +1,4 @@
+block #0:
+  arg$1 = arg 0
+  $false = 2
+  $result = $false

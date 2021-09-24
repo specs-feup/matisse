@@ -1,0 +1,17 @@
+scope find_dynamic {
+
+	I : int
+
+	scope simple_find {
+		I_temp : int
+	}
+
+	scope atmost_find {
+		I : int
+	}
+
+}
+
+scope sum {
+	DIM : int32
+}

@@ -1,0 +1,7 @@
+block #0:
+  A$1 = arg 0
+  $dim_2$1 = 2
+  $size_result$1 = call size [INT] A$1, $dim_2$1
+  $dim_3$1 = 3
+  $size_result$2 = call size [INT] A$1, $dim_3$1
+  y$ret = call times [INT] $size_result$1, $size_result$2

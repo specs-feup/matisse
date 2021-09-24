@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<actions>
+	<!-- 
+	<action name="typedef" class="app">
+		<parameter name="types" type="string"/>
+	</action>
+	-->
+
+	<!-- GLOBAL ACTIONS -->
+	
+
+	<!-- Inserts node before the given node -->
+	<action name="insertBefore" return="void">
+		<parameter name="node" type="joinpoint" />
+	</action>
+
+	<!-- Overload which accepts String -->
+	<action name="insertBefore" return="void">
+		<parameter name="node" type="String" />
+	</action>
+
+	<!-- Inserts node after the given node -->
+	<action name="insertAfter" return="void">
+		<parameter name="node" type="joinpoint" />
+	</action>
+
+	<!-- Overload which accepts String -->
+	<action name="insertAfter" return="void">
+		<parameter name="code" type="String" />
+	</action>
+	
+	<!-- Removes node associated to the joinpoint from the AST -->
+	<action name="detach" tooltip="Removes the node associated to this joinpoint from the AST"/>
+	
+	
+	<!-- APP -->
+	
+	
+	<action name="setGlobalType" class="app" tooltip="Defines the type of a global variable">
+		<parameter name="variable" type="String" />
+		<parameter name="type" type="String" />
+	</action>
+	
+	<action name="addFile" class="app" return="joinpoint" tooltip="Adds a file to the program">
+		<parameter name="filename" type="String" />
+		<parameter name="code" type="String" />
+	</action>
+
+
+	<!-- LOOP -->
+	
+	<action name="interchange" class="loop" tooltip="Switches the nesting order of two for loops.">
+		<!-- <parameter name="innerloop" type="joinpoint"/> -->
+	</action>
+
+	
+	
+	<!-- FUNCTION -->
+	
+	<action name="defType" class="function">
+		<parameter name="variable" type="String"/>
+		<parameter name="type" type="String"/>
+	</action>
+	
+	<action name="appendInput" class="function">
+		<parameter name="name" type="String"/>
+	</action>
+	
+	<action name="appendOutput" class="function">
+		<parameter name="name" type="String"/>
+	</action>
+	
+	<action name="prependInput" class="function">
+		<parameter name="name" type="String"/>
+	</action>
+	
+	<action name="prependOutput" class="function">
+		<parameter name="name" type="String"/>
+	</action>
+	
+	<action name="addGlobal" class="function">
+		<parameter name="name" type="String"/>
+	</action>
+	
+	<action name="insertReturn" class="function">
+		<parameter name="code" type="String"/>
+	</action>
+	
+	
+	
+	<!-- BODY -->
+
+	<action name="insertBegin" class="body">
+		<parameter name="node" type="joinpoint" />
+	</action>
+	<action name="insertBegin" class="body">
+		<parameter name="code" type="String" />
+	</action>
+
+	<action name="insertEnd" class="body">
+		<parameter name="node" type="joinpoint" />
+	</action>
+
+	<action name="insertEnd" class="body">
+		<parameter name="code" type="string" />
+	</action>
+	
+	<!-- ASSIGNMENT -->
+	
+	<action name="appendOutput" class="assignment">
+		<parameter name="code" type="String" />
+	</action>
+	
+	<action name="prependOutput" class="assignment">
+		<parameter name="code" type="String" />
+	</action>
+	
+	<action name="appendArgument" class="call">
+		<parameter name="code" type="String" />
+	</action>
+	
+	<action name="prependArgument" class="call">
+		<parameter name="code" type="String" />
+	</action>
+	
+	<!-- 
+	<action name="insert">
+			<parameter name="position" type="string" default = "before"/>
+			<parameter name="code" type="template"/>
+	</action>
+	 -->
+	<!-- If we want to bound an action to a single joinpoint type <action name="def" class="var"> -->
+	<!-- 
+	<action name="def">
+		<parameter name="attribute" type="string"/>
+		<parameter name="value" type="Object"/>
+	</action>
+	 -->
+	<!--  FOR JOINPOINT 'FILE' -->
+	<!--
+	<define_array_type>
+		<parameter name="type" type="string"/>
+	</define_array_type>
+	-->
+</actions>

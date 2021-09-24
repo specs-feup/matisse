@@ -1,0 +1,16 @@
+Function f
+block #0:
+  line 1
+  a$1 = !undefined
+  y2$1 = !undefined
+  y$1 = !undefined
+  line 2
+  line 3
+  $y2$1 = read_global ^y2
+  y$2 = $y2$1
+  line 4
+  $a$1 = read_global ^a
+  $y_index$1 = 1
+  y$3 = set y$2, $y_index$1, $a$1
+  line 5
+  y$ret = y$3

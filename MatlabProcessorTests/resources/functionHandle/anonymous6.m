@@ -1,0 +1,1 @@
+methods(m).fitFn = @(data) binaryFAfit(data, K, 'maxIter', 6, 'verbose', true, 'computeLoglik', false);

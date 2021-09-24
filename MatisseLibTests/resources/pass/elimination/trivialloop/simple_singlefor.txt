@@ -1,0 +1,11 @@
+block #0:
+  $init = 1
+  $body = $init
+  $bar = $start
+  $loopend = 1
+  $afterloop = $body
+  for $init, $init, $afterloop, #1, #2
+block #1:
+  $2 = phi #0:$init, #1:$2
+block #2:
+

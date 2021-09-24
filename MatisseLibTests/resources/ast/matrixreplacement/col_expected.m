@@ -1,0 +1,1 @@
+A = vertcat(B, C);

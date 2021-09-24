@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="resources"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/MatisseLib"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/MatlabIR"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/SpecsUtils"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/MatlabProcessor"/>
+	<classpathentry kind="src" path="/MatisseInterface"/>
+	<classpathentry kind="src" path="/CIR"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/jOptions"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/MatlabToCLib"/>
+	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=MatisseLibTests&amp;ivyXmlPath=ivy.xml&amp;confs=*"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,5 @@
+block #0:
+  A$1 = arg 0
+  x$1 = arg 1
+  $one = 1
+  y$1 = simple_get A$1, $one, x$1

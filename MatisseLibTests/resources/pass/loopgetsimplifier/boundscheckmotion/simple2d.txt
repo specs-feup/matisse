@@ -1,0 +1,21 @@
+block #0:
+  A$1 = arg 0
+  $numel = arg 1
+  $one = 1
+  $size_result$1 = end A$1, 0, 2
+  $is_size_sufficient$1 = call ge [LogicalType] $size_result$1, $numel
+  validate_true $is_size_sufficient$1
+  $size_result$2 = end A$1, 1, 2
+  $is_size_sufficient$2 = call ge [LogicalType] $size_result$2, $numel
+  validate_true $is_size_sufficient$2
+  for $one, $one, $numel, #1, #4
+block #1:
+  $iter$1 = iter
+  for $one, $one, $numel, #2, #3
+block #2:
+  $iter$2 = iter
+  o$1 = simple_get A$1, $iter$1, $iter$2
+block #3:
+
+block #4:
+  

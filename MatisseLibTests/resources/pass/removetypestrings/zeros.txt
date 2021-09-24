@@ -1,0 +1,4 @@
+block #0:
+  $3 = str "uint32"
+  A$1 = call zeros [DynamicMatrixType(uint32, shape=[Matrix Shape: [-1, -1], Dims: 2])] $1, $2
+  A$2 = A$1

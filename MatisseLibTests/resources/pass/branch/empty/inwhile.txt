@@ -1,0 +1,21 @@
+Function simple
+block #0:
+  x$1 = arg 0
+  y$2 = 0
+  while #1, #5
+block #1:
+  y$ret = phi #0:y$2, #4:y$4
+  x$2 = phi #0:x$1, #4:x$3
+  $gt_arg2$1 = 0
+  $not_arg1$1 = untyped_call gt x$2, $gt_arg2$1
+  $condition$1 = untyped_call not $not_arg1$1
+  branch $condition$1, #2, #3, #4
+block #2:
+  break
+block #3:
+  
+block #4:
+  $minus_arg2$1 = 1
+  x$3 = untyped_call minus x$2, $minus_arg2$1
+  y$4 = x$3
+block #5:

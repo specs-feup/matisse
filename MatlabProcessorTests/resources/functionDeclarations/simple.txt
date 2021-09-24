@@ -1,0 +1,4 @@
+simple
+[y]
+(x)
+y = x;

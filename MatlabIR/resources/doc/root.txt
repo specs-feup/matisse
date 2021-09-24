@@ -1,0 +1,106 @@
+JAVADOC_BEGIN:ClassFileNode
+
+ 
+ Node representing a Matlab class.
+ 
+ <p>
+ It can have a single 'Classdef' child.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:ClassdefNode
+
+ The root node of a MatLab class. Represents a list of statements.
+ 
+ <p>
+ Each children of a 'classdef' node is either a 'statement' or a 'Block'.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:FileNode
+
+ Node representing a Matlab file.
+ 
+ <p>
+ All children of the node are MatlabUnits, either a single 'Script' child, several 'Function' children or a single
+ 'Classdef' child.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:FileNodeContent
+nullJAVADOC_END
+
+JAVADOC_BEGIN:FunctionFileNode
+
+ Node representing a Matlab Function file.
+ 
+ <p>
+ It can have one or more 'Function' children.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:FunctionNode
+
+ The root node of a MatLab function.
+ 
+ <p>
+ The children can be either 'Statement' or 'Block'.
+ 
+ <p>
+ Can only contain one statement of type 'FunctionDeclaration'.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:MatlabUnitNode
+
+ Represents a single MATLAB Unit, which can be a Function, a Script or a Classdef.
+ 
+ <p>
+ All children of a MATLAB Unit are StatementNodes.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:RootNodeFactory
+nullJAVADOC_END
+
+JAVADOC_BEGIN:ScriptFileNode
+
+ Node representing a Matlab script.
+ 
+ <p>
+ It can have a single 'Script' child.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:ScriptNode
+
+ The root node of a MatLab script. Represents a list of statements.
+ 
+ <p>
+ Each children of a 'script' node is either a 'statement' or a 'Block'.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END

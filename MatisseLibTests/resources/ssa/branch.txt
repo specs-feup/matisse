@@ -1,0 +1,23 @@
+Function f
+block #0:
+  line 1
+  x$1 = arg 0
+  y$1 = !undefined
+  line 2
+  $gt_arg1$1 = x$1
+  $gt_arg2$1 = 0
+  $condition$1 = untyped_call gt $gt_arg1$1, $gt_arg2$1
+  branch $condition$1, #1, #2, #3
+block #1:
+  line 3
+  $number$1 = 1
+  y$2 = $number$1
+block #2:
+  line 5
+  $number$2 = 0
+  y$3 = $number$2
+block #3:
+  line 6
+  y$4 = phi #1:y$2, #2:y$3
+  line 7
+  y$ret = y$4

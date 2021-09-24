@@ -1,0 +1,24 @@
+/**
+ * ASPECTS 
+ */
+ 
+aspectdef MatisseAddFile
+	input filename, code end
+	output $file end
+	select app end
+	apply
+		//$app.exec $file:addFile(filename, code);
+		$file = $app.addFile(filename, code);
+	end
+end
+
+aspectdef SelectApp
+	output $selectedApp end
+	select app end
+	apply
+		$selectedApp = $app;
+		return;
+	end
+end
+
+

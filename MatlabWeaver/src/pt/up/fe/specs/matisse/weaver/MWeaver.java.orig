@@ -1,0 +1,238 @@
+/*
+ * Copyright 2013 SPeCS.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License. under the License.
+ */
+package org.specs.mweaver;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
+import larai.LaraI;
+
+import org.reflect.larai.IJoinPoint;
+import org.reflect.larai.utils.LaraIUtils;
+import org.specs.MatlabAspects.MatlabAspects;
+import org.specs.MatlabAspects.Quantizer;
+import org.specs.MatlabAspects.SymbolTable;
+import org.specs.MatlabIR.MatlabToken;
+import org.specs.MatlabProcessor.MatlabGenerator.MatlabGeneratorUtils;
+import org.specs.mweaver.abstracts.joinpoints.AFile;
+import org.specs.mweaver.abstracts.joinpoints.AProgramRoot;
+import org.specs.mweaver.abstracts.weaver.AMWeaver;
+import org.specs.mweaver.joinpoints.java.MRoot;
+import org.specs.mweaver.joinpoints.tom.MFile;
+import org.specs.mweaver.joinpoints.tom.Root;
+import org.specs.mweaver.options.Options;
+import org.specs.mweaver.utils.VarType;
+import org.specs.tom.TomTokenUtils;
+import org.specs.tom.strategies.QuantizersStrategies;
+import org.specs.tom.strategies.SemanticAnalysisStrategies;
+import org.specs.tom.strategies.utils.Mutex;
+import org.specs.tom.tomtokenutilstom.list.types.TomToken;
+import org.suikasoft.SharedLibrary.FactoryUtils;
+import org.suikasoft.SharedLibrary.IoUtils;
+
+/**
+ * Abstract Weaver Implementation for MWeaver. The implementation of the abstract methods is mandatory!
+ * 
+ * @author Lara C.
+ */
+public class MWeaver extends AMWeaver {
+    // Fields
+    private AProgramRoot root;
+    private Options options = new Options();
+
+    // Constructors
+
+    // Methods
+
+    /**
+     * Warns the lara interpreter if the weaver accepts a folder as the application or only one file at a time.
+     * 
+     * @return true if the weaver is able to work with several files, false if only works with one file
+     */
+    public boolean handlesApplicationFolder() {
+	return false;
+    }
+
+    /**
+     * Set a file/folder in the weaver if it is valid file/folder type for the weaver.
+     * 
+     * @param source
+     *            the file with the source code
+     * @return true if the file type is valid
+     */
+    public boolean begin(File source, String... args) {
+	
+	if (source == null || source.isDirectory())
+	    return false;
+	if (!source.getName().endsWith(".m"))
+	    return false;
+	if (!options.parse(args))
+	    return false;
+
+	newRoot(source);
+	return true;
+    }
+
+    /**
+     * Instantiate {@link AProgramRoot} according to the approach ( {@link MatlabToken} or {@link TomToken} )
+     * 
+     * @param source
+     */
+    private void newRoot(File source) {
+	if (options.isTom())
+	    this.root = new Root(source); // Join point root using TomToken
+	else
+	    this.root = new MRoot(source); // Join point root using MatlanToken
+    }
+
+    /**
+     * Returns the program root to be used by the weaver for the selects
+     * 
+     * @return interface implementation for the join point root/program
+     */
+    public IJoinPoint select() {
+	return root;
+    }
+
+    /**
+     * Closes the weaver and specifies the output directory location if the weaver generates new file(s)
+     * 
+     * @param outputDir
+     *            output directory for the generated file(s)
+     * @return if close was successful
+     */
+    public boolean close(File outputDir) {
+
+	StringBuilder outputFilePath = new StringBuilder(outputDir.getAbsolutePath());
+	outputFilePath.append(System.getProperty("file.separator"));
+
+	VarType typeDef = null;
+	TomToken tomRoot = null;
+	MatlabToken matlabToken = null;
+
+	AFile aFile = root.selectFile().get(0);
+	String fileName = aFile.getName();
+	String mainFunction = aFile.selectFunction().get(0).getName();
+
+	boolean fromTom = options.isTom();
+
+	if (fromTom) {
+
+	    MFile mFile = ((MFile) aFile);
+	    tomRoot = mFile.getTomRoot();
+	    typeDef = mFile.getTypeDef();
+
+	} else {
+	    org.specs.mweaver.joinpoints.java.MFile mFile = (org.specs.mweaver.joinpoints.java.MFile) aFile;
+	    matlabToken = mFile.getMatlabRoot();
+	    typeDef = mFile.getTypeDef();
+	}
+	outputFilePath.append(fileName);
+	File outputFile = new File(outputFilePath.toString());
+	File typeFile = new File(outputFilePath.toString().replace(".m", "_typeDef.txt"));
+	if (!typeDef.isEmpty()) {
+
+	    String typeDefString = typeDef.toString(mainFunction);
+	    IoUtils.write(typeFile, typeDefString);
+
+	    if (options.isMatlabTypes()) {
+		fromTom = true;
+		MatlabAspects ma = new MatlabAspects();
+		@SuppressWarnings("deprecation")
+		SymbolTable st = ma.getSymbolTable(typeDefString);
+		if (st == null) {
+		    return false;
+		}
+		// Create the quantizers
+		ArrayList<Quantizer> quantizers = ma.getQuantizers();
+
+		// Apply the strategy Quantizer & SemanticAnalysis
+		// ---------------------------------------------------------------------
+
+		TomToken tempTomTree;
+
+		if (!options.isTom()) {
+		    tempTomTree = TomTokenUtils.generateTomToken(matlabToken);
+		} else
+		    tempTomTree = tomRoot;
+		if (Mutex.take(Mutex.SemanticAnalysis)) {
+		    tempTomTree = SemanticAnalysisStrategies.doSemanticAnalysis(tempTomTree, st,
+			    quantizers, 0);
+		    tempTomTree = QuantizersStrategies.createQuantizers(tempTomTree, quantizers);
+		    Mutex.give(Mutex.SemanticAnalysis);
+		}
+	    }
+	}
+
+	if (fromTom || options.isTom())
+	    matlabToken = TomTokenUtils.generateMatlabToken(tomRoot);
+
+	String matlabCode = MatlabGeneratorUtils.generate(matlabToken);
+	boolean writeStatus = IoUtils.write(outputFile, matlabCode);
+
+	return writeStatus;
+    }
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+	// SuikaProperty.applyProperties();
+	// ProcessUtils.programStandardInit();
+	run(args);
+    }
+
+    public static void run(String[] args) {
+
+	List<String> argsW = new ArrayList<String>(Arrays.asList(args));
+	try {
+	    run(argsW);
+	} catch (URISyntaxException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	} catch (IOException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	}
+    }
+
+    public static void run(List<String> argsW) throws URISyntaxException, IOException {
+
+//	Map<String, String> resources = LaraIUtils.getResourcesWithName(MWeaver.class,
+//		"../../../MatlabSpecification");
+	Map<String, String> resources = FactoryUtils.newHashMap();
+	for(MWeaverResource resource : MWeaverResource.values()) {
+	    resources.put(resource.getResource(), IoUtils.getResource(resource));
+	}
+	
+	File specDir = new File("resources");
+	if (!specDir.exists())
+	    specDir.mkdirs();
+	for (String str : resources.keySet()) {
+	    File outFile = new File(specDir, str);
+	    IoUtils.write(outFile, resources.get(str));
+	}
+
+	if (argsW.size() != 0) {
+	    argsW.add("-w");
+	    argsW.add("org.specs.mweaver.MWeaver");
+	}
+	String args[] = {};
+	LaraI.exec(argsW.toArray(args));
+    }
+}

@@ -1,0 +1,1 @@
+java -jar TypeStringsGenerator.jar ./generated

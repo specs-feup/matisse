@@ -1,0 +1,2 @@
+classdef simple
+end

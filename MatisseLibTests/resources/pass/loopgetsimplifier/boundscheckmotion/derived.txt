@@ -1,0 +1,18 @@
+block #0:
+  A$1 = arg 0
+  $numel = arg 1
+  $one = 1
+  $max_plus$1 = call plus [INT] $numel, $one
+  $size_result$1 = end A$1, 0, 2
+  $is_size_sufficient$1 = call ge [LogicalType] $size_result$1, $max_plus$1
+  validate_true $is_size_sufficient$1
+  $size_result$2 = end A$1, 1, 2
+  $is_size_sufficient$2 = call ge [LogicalType] $size_result$2, $one
+  validate_true $is_size_sufficient$2
+  for $one, $one, $numel, #1, #2
+block #1:
+  $iter = iter
+  $plus = call plus [INT] $iter, $one
+  o$1 = simple_get A$1, $plus, $one
+block #2:
+  

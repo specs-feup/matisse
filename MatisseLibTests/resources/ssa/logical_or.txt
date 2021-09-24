@@ -1,0 +1,21 @@
+Function f
+block #0:
+  line 1
+  a$1 = arg 0
+  b$1 = arg 1
+  y$1 = !undefined
+  line 2
+  $MATISSE_short_circuit_or_left$1 = a$1
+  validate_boolean $MATISSE_short_circuit_or_left$1
+  branch $MATISSE_short_circuit_or_left$1, #1, #2, #3
+block #1:
+  $MATISSE_short_circuit_or_out$1 = builtin true
+block #2:
+  $MATISSE_short_circuit_or_right$1 = b$1
+  validate_boolean $MATISSE_short_circuit_or_right$1
+  $MATISSE_short_circuit_or_right_as_logical$1 = untyped_call logical $MATISSE_short_circuit_or_right$1
+block #3:
+  $or$1 = phi #2:$MATISSE_short_circuit_or_right_as_logical$1, #1:$MATISSE_short_circuit_or_out$1
+  y$2 = $or$1
+  line 3
+  y$ret = y$2

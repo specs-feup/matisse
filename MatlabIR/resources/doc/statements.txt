@@ -1,0 +1,350 @@
+JAVADOC_BEGIN:AccessCallSt
+
+ A simple function call, or array access. The first child is an AccessCall.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:AssignmentSt
+
+ A MatLab assignment. The first child is the left hand, the second child is the right hand.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:BlockSt
+
+ Represents a block of code. All children are of type 'statement' or 'Block'.
+ 
+ <p>
+ The first child is always a statement, which can be of the following types for BaseNodes: <br>
+ 'StatementType.For' <br>
+ 'StatementType.Parfor' <br>
+ 'StatementType.If' <br>
+ 'StatementType.Switch' <br>
+ 'StatementType.Try' <br>
+ 'StatementType.While'
+ 
+ <p>
+ Content is a StatementData, corresponding to the end statement that finishes the block.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:BreakSt
+
+ Break.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:BuilderData
+
+ Data for building a statement node.
+ 
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:CaseSt
+
+ A Case Declaration statement
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:CatchSt
+
+ A Case Declaration statement
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:CommandSt
+
+ A Command.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:CommentBlockSt
+
+ Contains a list of comments.
+ 
+ <p>
+ TODO: Currently, contains a list of comment statements. Consider if it should store only a list of strings.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:CommentSingleSt
+
+ A Comment.
+ 
+ <p>
+ TODO: Store string directly in CommentSt, instead of using nodes.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:CommentSt
+nullJAVADOC_END
+
+JAVADOC_BEGIN:ContinueSt
+
+ A Continue statement.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:ElseIfSt
+
+ ElseIf
+ 
+ <p>
+ Contains two children, the first is the reserved word, the second is the expression.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:ElseSt
+
+ Else
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:EndSt
+
+ An End statement. Contains one child, with the reserved word 'End'.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:ExpressionSt
+nullJAVADOC_END
+
+JAVADOC_BEGIN:ForSt
+
+ A For statement.
+ <p>
+ *
+ <p>
+ - The first child is the reserved word 'for' <br>
+ - The second child is the for expression which should have the following format: <br>
+ -- The first child is the identifier <br>
+ -- The second child is the assignment token <br>
+ -- The third child is an expression <br>
+ 
+ <p>
+ TODO: Simply structure, use structure similar to http://www.mathworks.com/help/matlab/ref/for.html<br>
+ - The first child is an identifier, representing the index <br>
+ - The second child represents the values, which can be: initVal:endVal, initVal:step:endVal and valArray (a matrix,
+ which will assign a column to the index at each iteration)
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:FunctionDeclarationSt
+
+ MatLab statement representing a function declaration.
+ 
+ <p>
+ Always has three children: an Outputs, an Identifier and a FunctionInputs.
+ 
+ <p>
+ Outputs represents the outputs, the Identifier contains the name of the function and FunctionInputs, the inputs.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:IfSt
+
+ An If statement
+ <p>
+ The first child is the reserved word "if", the second child is an expression representing the if condition.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:InvokeSt
+
+ A Command.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:LoopSt
+nullJAVADOC_END
+
+JAVADOC_BEGIN:OtherwiseSt
+
+ An Otherwise Declaration statement (part of a switch)
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:ParForSt
+
+ A ParFor statement.
+ <p>
+ *
+ <p>
+ - The first child is the reserved word 'parfor' <br>
+ - The second child is the for expression which should have the following format: <br>
+ -- The first child is the identifier <br>
+ -- The second child is the assignment token <br>
+ -- The third child is an expression <br>
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:ReservedWordSt
+
+ Represents statements which are formed by a single ReservedWord.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:ReturnSt
+
+ Return to invoking function.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:SimpleForSt
+
+ A For statement.
+ <p>
+ *
+ <p>
+ - The first child is the reserved word 'for' <br>
+ - The second child is the for expression which should have the following format: <br>
+ -- The first child is the identifier <br>
+ -- The second child is the assignment token <br>
+ -- The third child is an expression <br>
+ 
+ <p>
+ TODO: Simply structure, use structure similar to http://www.mathworks.com/help/matlab/ref/for.html<br>
+ - The first child is an identifier, representing the index <br>
+ - The second child represents the values, which can be: initVal:endVal, initVal:step:endVal and valArray (a matrix,
+ which will assign a column to the index at each iteration)
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:SpmdSt
+
+ A SPMD statement.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:StatementFactory
+
+ Utility methods for creating Statements.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:SwitchSt
+
+ A Switch statement.
+ 
+ <p>
+ The first child is the reserved keyword Switch, the second child is the expression
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:TrySt
+
+ A Try statement.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:UndefinedSt
+
+ For statements which are not defined.
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:WhileSt
+
+ A While statement.
+ <p>
+ The first child is "while" reserved word;<br>
+ The second child is the while condition;
+ 
+ @author JoaoBispo
+
+ 
+JAVADOC_END
+
+JAVADOC_BEGIN:MStatementType
+
+ Helper class for easier identification of statements, built upon the current tree structure.
+ 
+ @author Joao Bispo
+ 
+ 
+JAVADOC_END

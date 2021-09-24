@@ -1,0 +1,20 @@
+block #0:
+  $init = 1
+  for $start, $interval, $end, #1, #5
+block #1:
+  $body = phi #0:$init, #4:$body
+  $iter = iter
+  $bar = $iter
+  branch $body, #2, #3, #4
+block #2:
+  
+block #3:
+  
+block #4:
+  $loopend = 1
+block #5:
+  $afterloop = phi #0:$init, #4:$body
+  for $init, $init, $afterloop, #6, #7
+block #6:
+  $2 = phi #5:$init, #6:$2
+block #7:

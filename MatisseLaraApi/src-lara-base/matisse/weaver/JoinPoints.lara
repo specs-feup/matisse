@@ -1,0 +1,18 @@
+import weaver.JoinPointsBase;
+
+/**
+ * 
+ * @return {$jp[]} the children of the given node
+ */
+JoinPoints.prototype._all_children = function($jp) {
+	return $jp.astChildren;
+}
+
+
+/**
+ * 
+ * @return {$jp[]} the descendants of the given node
+ */
+JoinPoints.prototype._all_descendants = function($jp) {
+	return $jp.descendants;
+}

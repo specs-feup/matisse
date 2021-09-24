@@ -1,0 +1,8 @@
+/**
+ * This interface provides final Strings representing the different Statement Types. <br/>
+ * These variables are updated each time a change occurs in StatementType enumeration.
+ * 
+ * @author SPeCS: http://paginas.fe.up.pt/~specs/page6/page6.html
+ *
+ */
+ 

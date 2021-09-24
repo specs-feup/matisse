@@ -1,0 +1,25 @@
+Function test
+block #0:
+  X$1+2+3+4+5 = arg 0
+  $size_arg2$1 = 1
+  a$2+3+4+5+6 = untyped_call size X$1+2+3+4+5, $size_arg2$1
+  $size_arg2$2 = 2
+  b$2+3+4+5+6 = untyped_call size X$1+2+3+4+5, $size_arg2$2
+  y$2 = untyped_call zeros a$2+3+4+5+6, b$2+3+4+5+6
+  $start$1 = 1
+  $interval$1 = 1
+  for $start$1, $interval$1, a$2+3+4+5+6, #1, #4
+block #1:
+  y$3 = phi #0:y$2, #3:y$6
+  i$2+3+4 = iter
+  $start$2 = 1
+  $interval$2 = 1
+  for $start$2, $interval$2, b$2+3+4+5+6, #2, #3
+block #2:
+  y$4 = phi #1:y$3, #2:y$5
+  j$3 = iter
+  y$5 = simple_set y$4, i$2+3+4, j$3, i$2+3+4
+block #3:
+  y$6 = phi #1:y$3, #2:y$5
+block #4:
+  y$ret = phi #0:y$2, #3:y$6
