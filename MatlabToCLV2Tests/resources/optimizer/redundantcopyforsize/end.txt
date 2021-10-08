@@ -1,0 +1,5 @@
+block #0:
+  arg$1 = arg 0
+  arg$2 = arg 0
+  out$1 = complete_reduction MATRIX_SET arg$2, null, arg$1
+  numel$1 = end arg$1, 0, 1

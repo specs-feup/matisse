@@ -1,0 +1,10 @@
+block #0:
+  $int$1 = 1234
+  $mat$1 = call matisse_new_array_from_dims [DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [1234, 1234], Dims: 2])] $int$1, $int$1
+  $begin$1 = 1
+  $numel_result$1 = call numel [INT (1522756)] $mat$1
+  $value$1 = 0
+  $mat_gpu$1 = copy_to_gpu $mat$1
+  set_gpu_range $mat_gpu$1, $begin$1, $numel_result$1, $value$1
+  $mat$2 = complete_reduction MATRIX_SET $mat_gpu$1, null, $mat$1
+  $buffer$1 = copy_to_gpu $mat$2

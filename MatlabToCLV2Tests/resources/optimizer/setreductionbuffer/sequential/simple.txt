@@ -1,0 +1,5 @@
+block #0:
+  arg$1 = arg 0
+  arg$2 = arg 1
+  $mat$1 = complete_reduction MATRIX_SET arg$1, null, arg$2
+  $stuff$1 = arg$1

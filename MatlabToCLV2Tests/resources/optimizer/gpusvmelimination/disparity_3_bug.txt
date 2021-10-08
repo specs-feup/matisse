@@ -1,0 +1,8 @@
+block #0:
+  $one$1 = 1
+  $arg$1 = arg 0
+  $mat$1 = call matisse_new_array_from_dims [DynamicMatrixType(DOUBLE weak, shape=[Matrix Shape: [1, -1], Dims: 1])] $one$1, $arg$1
+  $mat_gpu$1 = copy_to_gpu $mat$1
+  $mat_gpu$2 = copy_to_gpu $mat$1
+  invoke_kernel kernel1 [], $mat_gpu$1, $mat_gpu$2
+  $mat$2 = complete_reduction MATRIX_SET $mat_gpu$2, null, $mat$1

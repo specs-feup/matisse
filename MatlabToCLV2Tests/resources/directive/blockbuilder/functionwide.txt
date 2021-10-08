@@ -1,0 +1,14 @@
+Function test
+block #0:
+  line 1
+  line 2
+  A$1 = arg 0
+  line 3
+  A$2 = arg 1
+  line 4
+  parallel_block schedule(direct) sum_reduction_strategy(simple) #1, #2
+block #1:
+  A$3 = A$1
+  line 5
+  y$ret = A$2
+block #2:

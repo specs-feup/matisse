@@ -1,0 +1,8 @@
+Function test
+block #0:
+  A$1 = arg 0
+  parallel_block schedule(direct) sum_reduction_strategy(simple) #1, #2
+block #1:
+  A$2 = A$1
+block #2:
+  A$3 = A$2
