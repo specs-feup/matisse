@@ -1,0 +1,6 @@
+Applying type inference to foo.m:foo()
+Applying post-type-inference pass 0 SsaCommentInserterPass to foo.m:foo
+Applying post-type-inference pass 1 ConvertToCssaPass to foo.m:foo
+Applying type inference to resource.m:resource()
+Applying post-type-inference pass 0 SsaCommentInserterPass to resource.m:resource
+Applying post-type-inference pass 1 ConvertToCssaPass to resource.m:resource

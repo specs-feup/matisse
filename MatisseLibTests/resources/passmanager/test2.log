@@ -1,0 +1,8 @@
+Applying AST pass 0 CommentRemoverPass to dummy.m:dummy
+Applying AST pass 1 CommentInserterPass to dummy.m:dummy
+Applying AST pass 2 FunctionReferencerPass to dummy.m:dummy
+Applying AST pass 0 CommentRemoverPass to dummy.m:aux
+Applying AST pass 1 CommentInserterPass to dummy.m:aux
+Applying AST pass 2 FunctionReferencerPass to dummy.m:aux
+Applying AST pass 3 CommentInserterPass to dummy.m:dummy
+Applying AST pass 3 CommentInserterPass to dummy.m:aux
