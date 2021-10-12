@@ -1,0 +1,24 @@
+aspectdef mweaver_test
+
+	// Add endsWith
+	String.prototype.endsWith = function(suffix) {
+    	return this.indexOf(suffix, this.length - suffix.length) !== -1;
+	};
+
+	// Global attributes
+	println("Global");
+	select app.file end
+	apply
+		println($app == $file.parent);
+	end
+	
+	// Joinpoint file
+	println("File");
+	select file end
+	apply
+		println($file.name);
+		println($file.absolutePath.endsWith($file.name));
+	end	
+	
+
+end

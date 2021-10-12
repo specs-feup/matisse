@@ -1,0 +1,18 @@
+aspectdef mweaver_test
+
+	// Add endsWith
+//	String.prototype.endsWith = function(suffix) {
+//    	return this.indexOf(suffix, this.length - suffix.length) !== -1;
+//	};
+
+
+	// Joinpoint var
+	println("Vars");
+	select var end
+	apply
+		println($var.name);
+	end
+	
+
+
+end

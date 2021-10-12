@@ -1,0 +1,16 @@
+aspectdef mweaver_test
+
+	// Add endsWith
+	String.prototype.endsWith = function(suffix) {
+    	return this.indexOf(suffix, this.length - suffix.length) !== -1;
+	};
+	
+	// Joinpoint call
+	println("Call");
+	select call end
+	apply
+		println($call.name + ": " + $call.num_args);
+	end
+	
+
+end

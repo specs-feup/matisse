@@ -1,0 +1,14 @@
+aspectdef matisse_options_test
+
+	select file end
+	apply
+		def inline = "get";
+		def inline = "!set";
+		def inline = "new_row";
+		def inline = "min";
+		def inline = "max";
+		//def inline = {"dummy" : true};
+		//def inline = "dummy";
+	end
+	
+end

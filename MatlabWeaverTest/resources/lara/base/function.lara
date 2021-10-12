@@ -1,0 +1,10 @@
+aspectdef mweaver_test
+	
+	// Joinpoint function	
+	println("Function");
+	select function end 
+	apply
+		println($function.name);
+	end
+
+end

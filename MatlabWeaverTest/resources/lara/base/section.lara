@@ -1,0 +1,25 @@
+aspectdef mweaver_test
+
+
+	i = 0;
+	select file.section end
+	apply
+		i++;
+	end
+	println(i === 7);
+
+	println("file.section");
+	select file.section end
+	apply
+		println($section.args);
+	end	
+
+	println("function.section");
+	select function.section end
+	apply
+		println($section.args);
+	end	
+	
+
+
+end

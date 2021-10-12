@@ -1,0 +1,14 @@
+true
+file.section
+before function
+inside function
+in comment block
+inside for
+before foo2
+inside foo2
+after foo2
+function.section
+inside function
+in comment block
+inside for
+inside foo2

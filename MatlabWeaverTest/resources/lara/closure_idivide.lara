@@ -1,0 +1,60 @@
+import Matisse;
+
+// Replaces division operations in closure function with a MATISSE primitive that performs integer division
+aspectdef closure_idivide
+    select function{"closure"} end
+    apply
+        call replace_operator("/", "N", "2", "matisse_idivide");
+        call replace_operator("/", "ii", "2", "matisse_idivide");
+    end
+    
+    call defineTypes("closure", {B: "double[]"});
+end
+
+aspectdef replace_operator
+    input operatorSymbol, leftOperand, rightOperand, newOperator end
+    
+    var divisions = [];
+
+    select operator end
+	apply
+        call operands : get_operands($operator);
+
+        var leftValue = operands.jp_operands[0].value;
+        var rightValue = operands.jp_operands[1].value;
+        
+        if(leftValue != leftOperand) {
+            continue;
+        }
+
+        if(rightValue != rightOperand) {
+            continue;
+        }
+
+        var intDiv = {};
+        intDiv.jp = $operator;
+        intDiv.left = leftValue;
+        intDiv.right = rightValue;
+        
+        divisions.push(intDiv);
+
+	end
+    condition $operator.symbol == operatorSymbol end
+    
+    for (i=0; i<divisions.length; i++) {
+        var div = divisions[i];
+        div.jp.insert around%{[[newOperator]]([[div.left]], [[div.right]])}%;
+    }
+
+end
+
+aspectdef get_operands
+    input jp_operator end
+    output jp_operands end
+    
+    jp_operands = [];
+    select jp_operator.operand end
+    apply
+		jp_operands[$operand.index] = $operand;
+    end
+end
