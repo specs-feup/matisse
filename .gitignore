@@ -47,8 +47,8 @@ RemoteSystemsTempFiles/
 tomJava/
 .svn/
 sf.eclipse.javacc.prefs
-MatisseOptions.lara
-Matisse.lara
+#MatisseOptions.lara
+#Matisse.lara
 
 output/
 .idea/
