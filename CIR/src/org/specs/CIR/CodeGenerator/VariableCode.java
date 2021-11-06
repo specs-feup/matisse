@@ -18,6 +18,7 @@ import java.util.List;
 
 import org.specs.CIR.Types.VariableType;
 import org.specs.CIR.Types.Views.Code.CodeUtils;
+import org.suikasoft.MvelPlus.MvelSolver;
 
 import pt.up.fe.specs.util.SpecsLogs;
 
@@ -76,16 +77,16 @@ public class VariableCode {
      * @return
      */
     public static String simplifyIndex(String index) {
-        return index;
+        // return index;
 
         // TODO: Throwing exception
-        // Integer indexSolution = MvelSolver.evaltoInteger(index);
-        //
-        // if (indexSolution == null) {
-        // return index;
-        // }
-        //
-        // return indexSolution.toString();
+        Integer indexSolution = MvelSolver.evaltoInteger(index);
+
+        if (indexSolution == null) {
+            return index;
+        }
+
+        return indexSolution.toString();
     }
 
 }
