@@ -13,7 +13,8 @@
 
 package pt.up.fe.specs.matisse.weaver;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.util.Arrays;
@@ -23,6 +24,7 @@ import org.lara.interpreter.joptions.config.interpreter.LaraiKeys;
 import org.lara.interpreter.joptions.config.interpreter.VerboseLevel;
 import org.lara.interpreter.joptions.keys.FileList;
 import org.lara.interpreter.joptions.keys.OptionalFile;
+import org.lara.interpreter.weaver.interf.WeaverEngine;
 import org.suikasoft.jOptions.Interfaces.DataStore;
 
 import larai.LaraI;
@@ -175,7 +177,7 @@ public class MatisseWeaverTester {
             if (weaver.getApp() != null) {
                 weaver.setWeaver();
                 SpecsLogs.msgInfo("Current code:\n" + weaver.getApp().getCode());
-                weaver.removeWeaver();
+                WeaverEngine.removeWeaver();
             } else {
                 SpecsLogs.msgInfo("App not created");
             }
