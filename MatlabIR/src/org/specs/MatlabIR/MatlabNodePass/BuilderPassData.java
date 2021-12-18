@@ -106,8 +106,8 @@ public abstract class BuilderPassData implements DataStore {
     }
 
     @Override
-    public Optional<StoreDefinition> getStoreDefinition() {
-        return setupBuilder.getStoreDefinition();
+    public Optional<StoreDefinition> getStoreDefinitionTry() {
+        return setupBuilder.getStoreDefinitionTry();
     }
 
     @Override
