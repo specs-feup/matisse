@@ -34,6 +34,10 @@ jobs:
     - name: Build with Ant
       run: |
         ant -noinput -buildfile build.xml
+        echo # ls ./
+        ls
+        echo # ls ./matisse
+        ls matisse        
     #- name: Copy test results        
     #  run: |
     #    # Tried relative paths (not supported by junit action) and symlinks (are not followed by glob)
@@ -45,6 +49,7 @@ jobs:
       with:
         #report_paths: '**/reports-eclipse-build/TEST-*.xml'
         #report_paths: 'junit-reports/*.xml'      
-        report_paths: '**/matisse/reports-eclipse-build/TEST-*.xml'
+        report_paths: '**/reports-eclipse-build/*.xml'
         summary: true
-        #exclude_sources: ''        
+        #exclude_sources: ''       
+[junitreport] Processing /home/runner/work/matisse/matisse/reports-eclipse-build/TESTS-TestSuites.xml to /tmp/null1508905726        
