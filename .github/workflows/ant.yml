@@ -56,4 +56,3 @@ jobs:
         report_paths: '**/reports-eclipse-build/*.xml'
         summary: true
         #exclude_sources: ''       
-[junitreport] Processing /home/runner/work/matisse/matisse/reports-eclipse-build/TESTS-TestSuites.xml to /tmp/null1508905726        
