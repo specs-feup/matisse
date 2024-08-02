@@ -1,2 +1,2 @@
 # Execute ANTLR
-[dir=generated/] java -jar ../../../specs-java-libs/SupportJavaLibs/tools/antlr4/antlr-4.6-complete.jar DirectivesLanguage.g4
+[dir=generated/] java -jar ../../Support/antlr4/antlr-4.6-complete.jar DirectivesLanguage.g4
