@@ -54,7 +54,13 @@ jobs:
         wget -N -O /usr/share/ant/lib/ivy-2.5.0.jar specs.fe.up.pt/libs/ivy-2.5.0.jar
     - name: Build with Ant
       run: |
-        sudo ant -noinput -buildfile build.xml
+        # Folders to where Z3 libraries might be copied
+        sudo chmod a+w /usr/java/packages/lib
+        sudo chmod a+w /usr/lib64        
+        sudo chmod a+w /lib64
+        sudo chmod a+w /lib        
+        sudo chmod a+w /usr/lib        
+        ant -noinput -buildfile build.xml
 
     - name: List directory
       run: |
