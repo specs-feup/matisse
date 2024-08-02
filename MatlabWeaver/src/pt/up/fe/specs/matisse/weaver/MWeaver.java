@@ -32,7 +32,6 @@ import org.lara.language.specification.LanguageSpecification;
 import org.lara.language.specification.dsl.LanguageSpecificationV2;
 import org.specs.CIR.Types.VariableType;
 import org.specs.Matisse.MatisseKeys;
-import org.specs.Matisse.MatisseUtils;
 import org.specs.Matisse.Matlab.TypesMap;
 import org.specs.MatlabIR.MatlabNode.MatlabNode;
 import org.specs.MatlabToC.jOptions.MatlabToCOptionUtils;
@@ -307,7 +306,9 @@ public class MWeaver extends AMWeaver {
         File aspectDataFile = new File(outputDir.get().getAbsolutePath(), getAspectDataFilename());
 
         // MatisseUtils.saveAspect(aspectDataFile, root.getAspectData());
-        MatisseUtils.saveAspect(aspectDataFile, settings);
+
+        // TODO: Saving the aspect file is not working!
+        // MatisseUtils.saveAspect(aspectDataFile, settings);
 
         // System.out.println("ASPECTS DATA:" + globalAspectData);
 
