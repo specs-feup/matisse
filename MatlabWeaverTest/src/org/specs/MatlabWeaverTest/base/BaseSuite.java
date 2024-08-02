@@ -29,7 +29,7 @@ import pt.up.fe.specs.util.properties.SpecsProperty;
  * 
  */
 @RunWith(Suite.class)
-@SuiteClasses({ BaseTests.class
+@SuiteClasses({ BaseTester.class
 
 })
 public class BaseSuite {

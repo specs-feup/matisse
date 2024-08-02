@@ -13,21 +13,24 @@
 
 package org.specs.MatlabWeaverTest.base;
 
+import org.junit.Test;
 import org.specs.MatlabWeaverTest.utils.TestUtils;
 
 import pt.up.fe.specs.util.SpecsSystem;
 
-public class BaseTests {
+/**
+ * "Disabled" (ends with Tester) because is not passing on GitHub action, but is passing locally
+ */
+public class BaseTester {
 
     // private final TestUtils testUtils;
 
-    public BaseTests() {
+    public BaseTester() {
         // this.testUtils = new TestUtils();
         SpecsSystem.programStandardInit();
     }
 
-    // TODO: Disabled because is not passing on GitHub action, but is passing locally
-    // @Test
+    @Test
     public void test() {
         for (JoinpointResource resource : JoinpointResource.values()) {
             TestUtils.test(resource);
