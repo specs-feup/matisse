@@ -2,6 +2,7 @@
 
 # Create .jj from .jjt
 # Could not set output directory of jjtree, setting working directory instead
+[dir=src/tir2tir/parser/] ls ../../../../../ -la
 [dir=src/tir2tir/parser/] java -cp ../../../../../specs-java-libs/SupportJavaLibs/tools/javacc/javacc-5.jar jjtree AspectsParser.jjt
 
 # Create grammar from .jj
