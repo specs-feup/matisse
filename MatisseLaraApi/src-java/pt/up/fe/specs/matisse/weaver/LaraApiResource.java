@@ -20,7 +20,7 @@ import org.lara.interpreter.weaver.utils.LaraResourceProvider;
  *
  */
 public enum LaraApiResource implements LaraResourceProvider {
-    MATISSE("Matisse.lara"),
+    // MATISSE("Matisse.lara"),
     MATISSE_ASPECTS("MatisseAspects.lara"),
     MATISSE_INTERNAL("MatisseInternal.lara");
 

@@ -20,9 +20,9 @@ import org.lara.interpreter.weaver.utils.LaraResourceProvider;
  *
  */
 public enum LaraApiCompatibilityResource implements LaraResourceProvider {
-    MATISSE("Matisse.lara"),
-    MATISSE_OPTIONS("MatisseOptions.lara");
-
+    // MATISSE("Matisse.lara"),
+    // MATISSE_OPTIONS("MatisseOptions.lara");
+    ;
     private final String resource;
 
     private static final String WEAVER_PACKAGE = "";
