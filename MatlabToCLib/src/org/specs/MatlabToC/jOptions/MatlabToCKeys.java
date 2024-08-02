@@ -13,6 +13,7 @@
 
 package org.specs.MatlabToC.jOptions;
 
+import java.util.HashSet;
 import java.util.Optional;
 
 import org.specs.MatlabIR.MatlabNode.nodes.core.AccessCallNode;
@@ -30,7 +31,6 @@ import org.suikasoft.jOptions.Datakey.KeyFactory;
 import org.suikasoft.jOptions.Interfaces.DataStore;
 import org.suikasoft.jOptions.Interfaces.DataView;
 
-import pt.up.fe.specs.util.collections.HashSetString;
 import pt.up.fe.specs.util.utilities.StringList;
 
 /**
@@ -90,16 +90,20 @@ public interface MatlabToCKeys {
     /**
      * A HashSetString containing the names of MATLAB functions that are considered element wise.
      */
-    public static final DataKey<HashSetString> ELEMENT_WISE_FUNCTIONS = KeyFactory.object("element_wise_functions",
-            HashSetString.class).setDefault(() -> new HashSetString());
+    // public static final DataKey<HashSetString> ELEMENT_WISE_FUNCTIONS = KeyFactory.object("element_wise_functions",
+    // HashSetString.class).setDefault(() -> new HashSetString());
+    public static final DataKey<HashSet<String>> ELEMENT_WISE_FUNCTIONS = KeyFactory.generic("element_wise_functions",
+            () -> new HashSet<String>()).setDefault(() -> new HashSet<String>());
 
     /**
      * A HashSetString containing the names of optimizations performed by MATISSE.
      * 
      * TODO: Replace with an EnumSet-like object, which specializes to MatisseOptimization.
      */
-    public static final DataKey<HashSetString> MATISSE_OPTIMIZATIONS = KeyFactory.object("matisse_optimizations",
-            HashSetString.class).setDefault(() -> new HashSetString());
+    // public static final DataKey<HashSetString> MATISSE_OPTIMIZATIONS = KeyFactory.object("matisse_optimizations",
+    // HashSetString.class).setDefault(() -> new HashSetString());
+    public static final DataKey<HashSet<String>> MATISSE_OPTIMIZATIONS = KeyFactory.generic("matisse_optimizations",
+            () -> new HashSet<String>()).setDefault(() -> new HashSet<String>());
 
     // public static final DataKey<EnumList<MatisseOptimization>> MATISSE_OPTIMIZATIONS_V2 = KeyFactory
     // .enumList("matisse_optimizations_v2", MatisseOptimization.class);

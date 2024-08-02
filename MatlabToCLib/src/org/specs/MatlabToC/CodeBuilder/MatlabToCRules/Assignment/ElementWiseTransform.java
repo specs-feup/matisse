@@ -42,7 +42,6 @@ import org.specs.MatlabToC.jOptions.MatlabToCKeys;
 import com.google.common.collect.Lists;
 
 import pt.up.fe.specs.util.classmap.ClassSet;
-import pt.up.fe.specs.util.collections.HashSetString;
 import pt.up.fe.specs.util.treenode.NodeInsertUtils;
 import pt.up.fe.specs.util.utilities.Replacer;
 
@@ -328,7 +327,7 @@ public class ElementWiseTransform {
     }
 
     public static boolean areElementWise(List<AccessCallNode> accessCalls, MatlabToCFunctionData data) {
-        HashSetString elementWiseFunctions = data.getSettings().get(MatlabToCKeys.ELEMENT_WISE_FUNCTIONS);
+        var elementWiseFunctions = data.getSettings().get(MatlabToCKeys.ELEMENT_WISE_FUNCTIONS);
 
         for (AccessCallNode accessCall : accessCalls) {
 

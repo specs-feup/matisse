@@ -15,6 +15,7 @@ package org.specs.MatlabToC.Program;
 
 import java.io.File;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,7 +46,6 @@ import pt.up.fe.specs.guihelper.SetupFieldOptions.SingleSetup;
 import pt.up.fe.specs.util.SpecsEnums;
 import pt.up.fe.specs.util.SpecsFactory;
 import pt.up.fe.specs.util.SpecsIo;
-import pt.up.fe.specs.util.collections.HashSetString;
 import pt.up.fe.specs.util.utilities.StringList;
 
 /**
@@ -271,7 +271,7 @@ public enum MatlabToCSetup implements SetupFieldEnum, DefaultValue, SingleSetup,
 
     private static void addOptimizations(DataStore aspectSetup, StringList optNames) {
         // Create HashSetString
-        HashSetString set = new HashSetString(optNames.getStringList());
+        var set = new HashSet<String>(optNames.getStringList());
         aspectSetup.set(MatlabToCKeys.MATISSE_OPTIMIZATIONS, set);
     }
 

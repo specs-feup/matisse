@@ -23,8 +23,6 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 
-import javax.script.ScriptException;
-
 import org.specs.CIR.CirKeys;
 import org.specs.CIR.CirUtils;
 import org.specs.CIR.Types.FunctionName;
@@ -53,7 +51,6 @@ import org.specs.matlabtocl.v2.ssa.ScheduleStrategy;
 import org.specs.matlabtocl.v2.ssa.passes.GpuSVMEliminationMode;
 import org.suikasoft.jOptions.Interfaces.DataStore;
 
-
 import pt.up.fe.specs.matisse.weaver.MWeaver;
 import pt.up.fe.specs.matisse.weaver.MWeaverUtils;
 import pt.up.fe.specs.matisse.weaver.abstracts.joinpoints.AApp;
@@ -63,7 +60,6 @@ import pt.up.fe.specs.matisse.weaver.abstracts.joinpoints.AJoinPoint;
 import pt.up.fe.specs.matisse.weaver.utils.VarType;
 import pt.up.fe.specs.util.SpecsIo;
 import pt.up.fe.specs.util.SpecsLogs;
-import pt.up.fe.specs.util.collections.HashSetString;
 import pt.up.fe.specs.util.collections.ScopedMap;
 import pt.up.fe.specs.util.exceptions.NotImplementedException;
 import tdrc.utils.StringUtils;
@@ -170,7 +166,7 @@ public class MApp extends AApp {
     }
 
     private static void defUseBlas(DataStore setup, Object value) {
-        HashSetString optimizations = setup.get(MatlabToCKeys.MATISSE_OPTIMIZATIONS);
+        var optimizations = setup.get(MatlabToCKeys.MATISSE_OPTIMIZATIONS);
 
         // Decode value
         Boolean boolValue = decodeBoolean("use_blas", value);
@@ -357,14 +353,14 @@ public class MApp extends AApp {
     }
 
     private static Node<ScheduleMethod, SchedulePredictorContext> getDecisionTreeNode(Object obj) {
-    	var jsEngine = MWeaver.getThreadLocalWeaver().getScriptEngine();
-    	
-    	if (!jsEngine.isArray(obj)) {
+        var jsEngine = MWeaver.getThreadLocalWeaver().getScriptEngine();
+
+        if (!jsEngine.isArray(obj)) {
             throw new IllegalArgumentException("Expected array, got " + obj.toString());
         }
 
-    	var values = new ArrayList<>(jsEngine.getValues(obj));
-    	
+        var values = new ArrayList<>(jsEngine.getValues(obj));
+
         if (values.isEmpty()) {
             throw new IllegalArgumentException("Got empty array");
         }
@@ -375,7 +371,6 @@ public class MApp extends AApp {
             }
             String ruleName = values.get(1).toString();
 
-            
             Object minimumObj = values.get(2);
             if (!jsEngine.isNumber(minimumObj)) {
                 throw new IllegalArgumentException("Expected minimum value (number), got " + minimumObj.toString());
@@ -404,9 +399,10 @@ public class MApp extends AApp {
                     throw new IllegalArgumentException("Expected number, got " + value);
                 }
 
-                Number valueDouble = jsEngine.asDouble(value);;
+                Number valueDouble = jsEngine.asDouble(value);
+                ;
                 if (valueDouble.doubleValue() == valueDouble.intValue()) {
-                	terminalValues.add(valueDouble.intValue());
+                    terminalValues.add(valueDouble.intValue());
                 } else {
                     throw new IllegalArgumentException("Expected integer");
                 }
@@ -421,11 +417,11 @@ public class MApp extends AApp {
             String functionCode = values.get(1).toString();
 
             return new TerminalNode<ScheduleMethod, SchedulePredictorContext>((c, r) -> {
-                	var evalFunc = jsEngine.eval(functionCode);
+                var evalFunc = jsEngine.eval(functionCode);
 
-//                    evalFunc = (JSObject) new NashornScriptEngineFactory().getScriptEngine().eval(functionCode);
-//                    return getDecisionTreeNode(evalFunc.call(null, c)).decide(c, r);
-                    return getDecisionTreeNode(jsEngine.call(evalFunc, null, c)).decide(c, r);                    
+                // evalFunc = (JSObject) new NashornScriptEngineFactory().getScriptEngine().eval(functionCode);
+                // return getDecisionTreeNode(evalFunc.call(null, c)).decide(c, r);
+                return getDecisionTreeNode(jsEngine.call(evalFunc, null, c)).decide(c, r);
 
             });
         } else {

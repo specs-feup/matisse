@@ -13,8 +13,29 @@
 
 package org.specs.MatlabToC.jOptions;
 
-import static org.specs.MatlabToC.Functions.MathFunction.*;
-import static org.specs.MatlabToC.Functions.MatlabOp.*;
+import static org.specs.MatlabToC.Functions.MathFunction.ABS;
+import static org.specs.MatlabToC.Functions.MathFunction.COS;
+import static org.specs.MatlabToC.Functions.MathFunction.MOD;
+import static org.specs.MatlabToC.Functions.MathFunction.ROUND;
+import static org.specs.MatlabToC.Functions.MathFunction.SIN;
+import static org.specs.MatlabToC.Functions.MathFunction.SQRT;
+import static org.specs.MatlabToC.Functions.MatlabOp.Addition;
+import static org.specs.MatlabToC.Functions.MatlabOp.ElementWiseAnd;
+import static org.specs.MatlabToC.Functions.MatlabOp.ElementWiseOr;
+import static org.specs.MatlabToC.Functions.MatlabOp.Equal;
+import static org.specs.MatlabToC.Functions.MatlabOp.GreaterThan;
+import static org.specs.MatlabToC.Functions.MatlabOp.GreaterThanOrEqual;
+import static org.specs.MatlabToC.Functions.MatlabOp.LeftDivision;
+import static org.specs.MatlabToC.Functions.MatlabOp.LessThan;
+import static org.specs.MatlabToC.Functions.MatlabOp.LessThanOrEqual;
+import static org.specs.MatlabToC.Functions.MatlabOp.LogicalNegation;
+import static org.specs.MatlabToC.Functions.MatlabOp.Multiplication;
+import static org.specs.MatlabToC.Functions.MatlabOp.NotEqual;
+import static org.specs.MatlabToC.Functions.MatlabOp.Power;
+import static org.specs.MatlabToC.Functions.MatlabOp.RightDivision;
+import static org.specs.MatlabToC.Functions.MatlabOp.Subtraction;
+import static org.specs.MatlabToC.Functions.MatlabOp.UnaryMinus;
+import static org.specs.MatlabToC.Functions.MatlabOp.UnaryPlus;
 
 import java.util.HashSet;
 import java.util.List;
@@ -32,7 +53,6 @@ import org.specs.MatlabToC.MatlabFunction.MatlabFunctionProviderEnum;
 import org.suikasoft.jOptions.Interfaces.DataStore;
 
 import pt.up.fe.specs.util.SpecsFactory;
-import pt.up.fe.specs.util.collections.HashSetString;
 
 /**
  * Utility methods related to MatlabToCOptions.
@@ -149,11 +169,11 @@ public class MatlabToCOptionUtils {
         defaultSetup.set(CirKeys.DEFAULT_REAL, NumericTypeV2.newInstance(CTypeV2.DOUBLE, 64));
 
         // Default element-wise functions
-        HashSetString elementWiseFunctions = new HashSetString(MatlabToCOptionUtils.ELEMENT_WISE_FUNCTIONS);
+        var elementWiseFunctions = new HashSet<String>(MatlabToCOptionUtils.ELEMENT_WISE_FUNCTIONS);
         defaultSetup.set(MatlabToCKeys.ELEMENT_WISE_FUNCTIONS, elementWiseFunctions);
 
         // Default optimizations
-        HashSetString optimizations = new HashSetString(MatlabToCOptionUtils.MATISSE_OPTIMIZATIONS);
+        var optimizations = new HashSet<String>(MatlabToCOptionUtils.MATISSE_OPTIMIZATIONS);
         defaultSetup.set(MatlabToCKeys.MATISSE_OPTIMIZATIONS, optimizations);
 
         // Enable Z3 by default

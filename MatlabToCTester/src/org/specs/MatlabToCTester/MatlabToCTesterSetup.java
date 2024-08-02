@@ -15,6 +15,7 @@ package org.specs.MatlabToCTester;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.specs.MatlabIR.MatlabLanguage.LanguageMode;
@@ -47,7 +48,6 @@ import pt.up.fe.specs.guihelper.SetupFieldOptions.MultipleChoice;
 import pt.up.fe.specs.guihelper.SetupFieldOptions.SingleSetup;
 import pt.up.fe.specs.util.SpecsEnums;
 import pt.up.fe.specs.util.SpecsIo;
-import pt.up.fe.specs.util.collections.HashSetString;
 import pt.up.fe.specs.util.utilities.StringList;
 
 /**
@@ -269,7 +269,7 @@ public enum MatlabToCTesterSetup implements SetupFieldEnum, MultipleChoice, Sing
         implSettings.set(generalSetup);
 
         // Add optimizations to general setup
-        HashSetString optimizations = new HashSetString(setup.getStringList(Optimizations).getStringList());
+        var optimizations = new HashSet<String>(setup.getStringList(Optimizations).getStringList());
 
         generalSetup.set(MatlabToCKeys.MATISSE_OPTIMIZATIONS, optimizations);
 

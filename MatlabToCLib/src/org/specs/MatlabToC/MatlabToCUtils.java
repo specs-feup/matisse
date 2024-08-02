@@ -44,7 +44,6 @@ import org.suikasoft.jOptions.Interfaces.DataStore;
 
 import pt.up.fe.specs.util.SpecsIo;
 import pt.up.fe.specs.util.SpecsLogs;
-import pt.up.fe.specs.util.collections.HashSetString;
 
 /**
  * @author Joao Bispo
@@ -250,7 +249,7 @@ public class MatlabToCUtils {
      * @return
      */
     public static boolean isActive(DataStore setup, MatisseOptimization opt) {
-        HashSetString opts = setup.get(MatlabToCKeys.MATISSE_OPTIMIZATIONS);
+        var opts = setup.get(MatlabToCKeys.MATISSE_OPTIMIZATIONS);
 
         return opts.contains(opt.getName());
     }

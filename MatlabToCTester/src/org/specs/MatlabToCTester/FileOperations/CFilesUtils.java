@@ -56,7 +56,6 @@ import pt.up.fe.specs.util.SpecsIo;
 import pt.up.fe.specs.util.SpecsLogs;
 import pt.up.fe.specs.util.SpecsStrings;
 import pt.up.fe.specs.util.SpecsSystem;
-import pt.up.fe.specs.util.collections.HashSetString;
 import pt.up.fe.specs.util.jobs.Job;
 import pt.up.fe.specs.util.utilities.StringList;
 
@@ -543,7 +542,7 @@ public class CFilesUtils {
 
         // Optimizations
         // HashSetString opts = setup.getA().value(MatlabToCOption.MATISSE_OPTIMIZATIONS, HashSetString.class);
-        HashSetString opts = setup.get(MatlabToCKeys.MATISSE_OPTIMIZATIONS);
+        var opts = setup.get(MatlabToCKeys.MATISSE_OPTIMIZATIONS);
         cData.put(MatlabToCSetup.Optimizations,
                 FieldValue.create(new StringList(opts), FieldType.multipleChoiceStringList));
 
