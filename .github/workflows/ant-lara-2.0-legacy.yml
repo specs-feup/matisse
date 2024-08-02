@@ -54,7 +54,7 @@ jobs:
         wget -N -O /usr/share/ant/lib/ivy-2.5.0.jar specs.fe.up.pt/libs/ivy-2.5.0.jar
     - name: Build with Ant
       run: |
-        ant -noinput -buildfile build.xml
+        sudo ant -noinput -buildfile build.xml
 
     - name: List directory
       run: |
